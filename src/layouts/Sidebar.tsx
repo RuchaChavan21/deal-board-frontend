@@ -61,24 +61,24 @@ export const Sidebar = () => {
   }
 
   return (
-    <aside className="w-64 bg-card border-r border-border h-screen flex flex-col">
-      <div className="px-6 py-4 border-b border-border">
+    <aside className="w-64 bg-sidebar border-r border-border h-screen flex flex-col shadow-sm">
+      <div className="px-6 py-4 border-b border-border bg-sidebar">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-sm">
             <span className="text-primary-foreground font-bold text-lg">D</span>
           </div>
-          <span className="text-xl font-bold tracking-tight">Deal Board</span>
+          <span className="text-xl font-semibold tracking-tight text-text-base">Deal Board</span>
         </Link>
       </div>
-      <nav className="flex-1 px-3 py-4 space-y-1">
+      <nav className="flex-1 px-3 py-4 space-y-1 bg-sidebar">
         {navItems.map((item) => (
           <Link
             key={item.path}
             href={item.path}
             className={`flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all ${
               isActive(item.path)
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                ? "bg-primary text-primary-foreground shadow-md"
+                : "text-muted-foreground hover:bg-accent/5 hover:text-text-base"
             }`}
           >
             {item.icon}

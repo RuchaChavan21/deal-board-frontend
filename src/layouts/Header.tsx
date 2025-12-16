@@ -55,11 +55,11 @@ export const Header = () => {
   const activeOrgName = activeOrgData?.name || "Select Organization"
 
   return (
-    <header className="h-16 bg-card border-b border-border flex items-center justify-between px-6">
+    <header className="h-16 bg-base border-b border-border flex items-center justify-between px-6 shadow-sm">
       <div className="relative">
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-background border border-border rounded-lg hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-ring"
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-card text-text-base border border-border rounded-lg hover:bg-section transition-colors focus:outline-none focus:ring-2 focus:ring-accent"
         >
           <Building2 className="w-4 h-4 text-muted-foreground" />
           <span>{activeOrgName}</span>
@@ -93,10 +93,10 @@ export const Header = () => {
       </div>
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center shadow-xs">
             <User className="w-4 h-4 text-primary" />
           </div>
-          <span className="text-sm font-medium">User</span>
+          <span className="text-sm font-medium text-text-base">User</span>
         </div>
       </div>
     </header>
