@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { ChevronDown, Building2, User } from "lucide-react"
-import { organizationsApi } from "../api/organizations"
+import { getOrganizations } from "../api/organizations"
 import type { Organization } from "../types"
 
 export const Header = () => {
@@ -12,17 +12,12 @@ export const Header = () => {
 
   useEffect(() => {
     const fetchOrganizations = async () => {
-      try {
-        const orgs = await organizationsApi.getAll()
-        const orgArray = Array.isArray(orgs) ? orgs : []
-        setOrganizations(orgArray)
-        if (orgArray.length > 0) {
-          const storedOrgId = localStorage.getItem("activeOrganizationId")
-          setActiveOrg(storedOrgId || orgArray[0].id)
-        }
-      } catch (error) {
-        console.error("Failed to fetch organizations:", error)
-        setOrganizations([])
+      const orgs = await getOrganizations()
+      const orgArray = Array.isArray(orgs) ? orgs : []
+      setOrganizations(orgArray)
+      if (orgArray.length > 0) {
+        const storedOrgId = localStorage.getItem("orgId") || localStorage.getItem("activeOrganizationId")
+        setActiveOrg(storedOrgId || orgArray[0].id)
       }
     }
 
@@ -30,14 +25,10 @@ export const Header = () => {
   }, [])
 
   const handleOrgChange = async (orgId: string) => {
-    try {
-      await organizationsApi.setActive(orgId)
-      setActiveOrg(orgId)
-      localStorage.setItem("activeOrganizationId", orgId)
-      setIsDropdownOpen(false)
-    } catch (error) {
-      console.error("Failed to set active organization:", error)
-    }
+    setActiveOrg(orgId)
+    localStorage.setItem("orgId", orgId)
+    localStorage.setItem("activeOrganizationId", orgId)
+    setIsDropdownOpen(false)
   }
 
   const activeOrgName = Array.isArray(organizations)

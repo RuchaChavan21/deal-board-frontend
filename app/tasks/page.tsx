@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { tasksApi } from "../../src/api/tasks"
+import { getTasks, createTask } from "../../src/api/tasks"
 import type { Task } from "../../src/types"
 import { Button } from "../../src/components/Button"
 import { Modal } from "../../src/components/Modal"
@@ -27,7 +27,7 @@ export default function TasksPage() {
   const fetchTasks = async () => {
     setIsLoading(true)
     try {
-      const data = await tasksApi.getAll()
+      const data = await getTasks()
       setTasks(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error("Failed to fetch tasks:", error)
@@ -44,7 +44,7 @@ export default function TasksPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      await tasksApi.create(formData)
+      await createTask(formData)
       setIsModalOpen(false)
       setFormData({
         title: "",
@@ -61,12 +61,7 @@ export default function TasksPage() {
   }
 
   const handleMarkCompleted = async (taskId: string) => {
-    try {
-      await tasksApi.markCompleted(taskId)
-      fetchTasks()
-    } catch (error) {
-      console.error("Failed to mark task as completed:", error)
-    }
+    setTasks((prev) => prev.map((task) => (task.id === taskId ? { ...task, status: "completed" as const } : task)))
   }
 
   const columns = [

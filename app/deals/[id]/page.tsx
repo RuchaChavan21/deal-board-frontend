@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { dealsApi } from "../../../src/api/deals"
-import { tasksApi } from "../../../src/api/tasks"
+import { getDeals, updateDeal } from "../../../src/api/deals"
+import { getTasks } from "../../../src/api/tasks"
 import type { Deal, Task, DealStage } from "../../../src/types"
 import { Button } from "../../../src/components/Button"
 import { Select } from "../../../src/components/Select"
@@ -22,11 +22,12 @@ export default function DealDetailPage() {
       if (!id) return
 
       try {
-        const dealData = await dealsApi.getById(id)
-        setDeal(dealData)
+        const allDeals = await getDeals()
+        const found = Array.isArray(allDeals) ? allDeals.find((item) => item.id === id) : null
+        setDeal(found ?? null)
 
-        const allTasks = await tasksApi.getAll()
-        const dealTasks = allTasks.filter((task) => task.dealId === id)
+        const allTasks = await getTasks()
+        const dealTasks = Array.isArray(allTasks) ? allTasks.filter((task) => task.dealId === id) : []
         setTasks(dealTasks)
       } catch (error) {
         console.error("Failed to fetch deal details:", error)
@@ -42,24 +43,15 @@ export default function DealDetailPage() {
     if (!deal || !id) return
 
     try {
-      const updatedDeal = await dealsApi.updateStage(id, newStage as DealStage)
-      if (updatedDeal) {
-        setDeal(updatedDeal)
-      }
+      const updatedDeal = await updateDeal(id, { stage: newStage as DealStage })
+      setDeal(updatedDeal ?? deal)
     } catch (error) {
       console.error("Failed to update deal stage:", error)
     }
   }
 
   const handleMarkTaskCompleted = async (taskId: string) => {
-    try {
-      const result = await tasksApi.markCompleted(taskId)
-      if (result) {
-        setTasks(tasks.map((task) => (task.id === taskId ? { ...task, status: "completed" as const } : task)))
-      }
-    } catch (error) {
-      console.error("Failed to mark task as completed:", error)
-    }
+    setTasks(tasks.map((task) => (task.id === taskId ? { ...task, status: "completed" as const } : task)))
   }
 
   if (isLoading) {

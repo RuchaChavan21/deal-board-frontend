@@ -14,9 +14,9 @@ interface MainLayoutProps {
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const pathname = usePathname()
 
-  const isDashboardPage = pathname !== "/"
+  const isPublic = pathname === "/" || pathname === "/login" || pathname === "/register"
 
-  if (!isDashboardPage) {
+  if (isPublic) {
     return <>{children}</>
   }
 

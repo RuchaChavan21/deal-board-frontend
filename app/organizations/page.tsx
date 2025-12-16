@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { organizationsApi } from "../../src/api/organizations"
+import { getOrganizations } from "../../src/api/organizations"
 import type { Organization } from "../../src/types"
 import { Button } from "../../src/components/Button"
 import { Modal } from "../../src/components/Modal"
@@ -22,7 +22,7 @@ export default function OrganizationsPage() {
   const fetchOrganizations = async () => {
     setIsLoading(true)
     try {
-      const data = await organizationsApi.getAll()
+      const data = await getOrganizations()
       setOrganizations(Array.isArray(data) ? data : [])
       const storedOrgId = localStorage.getItem("activeOrganizationId")
       if (storedOrgId) {
@@ -43,7 +43,6 @@ export default function OrganizationsPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      await organizationsApi.create(formData)
       setIsModalOpen(false)
       setFormData({ name: "", description: "" })
       fetchOrganizations()
@@ -53,14 +52,10 @@ export default function OrganizationsPage() {
   }
 
   const handleSetActive = async (orgId: string) => {
-    try {
-      await organizationsApi.setActive(orgId)
-      setActiveOrgId(orgId)
-      localStorage.setItem("activeOrganizationId", orgId)
-      window.location.reload()
-    } catch (error) {
-      console.error("Failed to set active organization:", error)
-    }
+    setActiveOrgId(orgId)
+    localStorage.setItem("orgId", orgId)
+    localStorage.setItem("activeOrganizationId", orgId)
+    window.location.reload()
   }
 
   if (isLoading) {

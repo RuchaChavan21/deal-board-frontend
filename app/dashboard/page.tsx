@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { dashboardApi } from "../../src/api/dashboard"
+import { getDashboardSummary } from "../../src/api/dashboard"
 import type { DashboardStats, Deal, Task } from "../../src/types"
 
 export default function DashboardPage() {
@@ -14,33 +14,21 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const fetchDashboardData = async () => {
-      try {
-        const statsData = await dashboardApi.getStats().catch(() => ({
-          totalCustomers: 0,
-          activeDeals: 0,
-          dealsWon: 0,
-          pendingTasks: 0,
-        }))
+      const summary = await getDashboardSummary().catch(() => null)
 
-        const dealsData = await dashboardApi.getRecentDeals().catch(() => [])
-        const tasksData = await dashboardApi.getUpcomingTasks().catch(() => [])
+      const summaryStats =
+        summary?.stats ??
+        ({
+          totalCustomers: summary?.totalCustomers ?? 0,
+          activeDeals: summary?.activeDeals ?? summary?.totalDeals ?? 0,
+          dealsWon: summary?.dealsWon ?? 0,
+          pendingTasks: summary?.pendingTasks ?? summary?.activeTasks ?? 0,
+        } satisfies DashboardStats)
 
-        setStats(statsData)
-        setRecentDeals(Array.isArray(dealsData) ? dealsData : [])
-        setUpcomingTasks(Array.isArray(tasksData) ? tasksData : [])
-      } catch (error) {
-        console.error("Failed to fetch dashboard data:", error)
-        setStats({
-          totalCustomers: 0,
-          activeDeals: 0,
-          dealsWon: 0,
-          pendingTasks: 0,
-        })
-        setRecentDeals([])
-        setUpcomingTasks([])
-      } finally {
-        setIsLoading(false)
-      }
+      setStats(summaryStats)
+      setRecentDeals(Array.isArray(summary?.recentDeals) ? summary.recentDeals : [])
+      setUpcomingTasks(Array.isArray(summary?.upcomingTasks) ? summary.upcomingTasks : [])
+      setIsLoading(false)
     }
 
     fetchDashboardData()

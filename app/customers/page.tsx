@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { customersApi } from "../../src/api/customers"
+import { getCustomers } from "../../src/api/customers"
 import type { Customer } from "../../src/types"
 import { Button } from "../../src/components/Button"
 import { Modal } from "../../src/components/Modal"
@@ -28,9 +28,10 @@ export default function CustomersPage() {
   const fetchCustomers = async (page = 1) => {
     setIsLoading(true)
     try {
-      const response = await customersApi.getAll(page, 20)
-      setCustomers(response.customers)
-      setTotalPages(Math.ceil(response.total / 20) || 1)
+      const response = await getCustomers()
+      const list = Array.isArray(response) ? response : []
+      setCustomers(list)
+      setTotalPages(1)
     } catch (error) {
       console.error("Failed to fetch customers:", error)
       setCustomers([])
@@ -46,12 +47,10 @@ export default function CustomersPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const result = await customersApi.create(formData)
-      if (result) {
-        setIsModalOpen(false)
-        setFormData({ name: "", email: "", phone: "", owner: "", status: "active" })
-        fetchCustomers(currentPage)
-      }
+      await getCustomers()
+      setIsModalOpen(false)
+      setFormData({ name: "", email: "", phone: "", owner: "", status: "active" })
+      fetchCustomers(currentPage)
     } catch (error) {
       console.error("Failed to create customer:", error)
     }

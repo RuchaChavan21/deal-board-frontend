@@ -39,12 +39,12 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <Link href="/dashboard">
+              <Link href="/login">
                 <Button variant="ghost" size="sm">
                   Login
                 </Button>
               </Link>
-              <Link href="/dashboard">
+              <Link href="/register">
                 <Button size="sm" className="bg-primary hover:bg-primary/90">
                   Get Started
                 </Button>
@@ -71,7 +71,7 @@ export default function LandingPage() {
               with intelligent automation.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/dashboard">
+              <Link href="/register">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-base px-8 h-12 rounded-xl">
                   Get Started Free
                   <ArrowRight className="w-5 h-5 ml-2" />

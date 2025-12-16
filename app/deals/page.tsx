@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { dealsApi } from "../../src/api/deals"
+import { getDeals } from "../../src/api/deals"
 import type { Deal, DealStage } from "../../src/types"
 import { DEAL_STAGES } from "../../src/utils/constants"
 
@@ -14,7 +14,7 @@ export default function DealsPage() {
   useEffect(() => {
     const fetchDeals = async () => {
       try {
-        const data = await dealsApi.getAll()
+        const data = await getDeals()
         setDeals(Array.isArray(data) ? data : [])
       } catch (error) {
         console.error("Failed to fetch deals:", error)
