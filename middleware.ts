@@ -21,10 +21,16 @@ export function middleware(request: NextRequest) {
   }
 
   const token = request.cookies.get("token")?.value
+  const currentOrgId = request.cookies.get("currentOrgId")?.value
 
   if (!token) {
     const loginUrl = new URL("/login", request.url)
     return NextResponse.redirect(loginUrl)
+  }
+
+  if (!currentOrgId && pathname !== "/organizations") {
+    const orgUrl = new URL("/organizations", request.url)
+    return NextResponse.redirect(orgUrl)
   }
 
   return NextResponse.next()

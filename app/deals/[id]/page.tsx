@@ -8,6 +8,7 @@ import type { Deal, Task, DealStage } from "../../../src/types"
 import { Button } from "../../../src/components/Button"
 import { Select } from "../../../src/components/Select"
 import { DEAL_STAGES } from "../../../src/utils/constants"
+import { canManageDeals } from "../../../src/utils/roles"
 
 export default function DealDetailPage() {
   const params = useParams()
@@ -16,6 +17,7 @@ export default function DealDetailPage() {
   const [deal, setDeal] = useState<Deal | null>(null)
   const [tasks, setTasks] = useState<Task[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [role, setRole] = useState<string>("")
 
   useEffect(() => {
     const fetchDealDetails = async () => {
@@ -37,6 +39,8 @@ export default function DealDetailPage() {
     }
 
     fetchDealDetails()
+    const storedRole = typeof window !== "undefined" ? localStorage.getItem("role") || "" : ""
+    setRole(storedRole)
   }, [id])
 
   const handleStageChange = async (newStage: string) => {
@@ -98,14 +102,16 @@ export default function DealDetailPage() {
             <label className="block text-sm font-medium text-gray-700 mb-1">Owner</label>
             <div className="text-lg text-gray-900">{deal.ownerName}</div>
           </div>
-          <div className="col-span-2">
-            <Select
-              label="Deal Stage"
-              value={deal.stage}
-              onChange={(e) => handleStageChange(e.target.value)}
-              options={DEAL_STAGES.map((stage) => ({ value: stage, label: stage }))}
-            />
-          </div>
+          {canManageDeals(role) && (
+            <div className="col-span-2">
+              <Select
+                label="Deal Stage"
+                value={deal.stage}
+                onChange={(e) => handleStageChange(e.target.value)}
+                options={DEAL_STAGES.map((stage) => ({ value: stage, label: stage }))}
+              />
+            </div>
+          )}
         </div>
       </div>
 

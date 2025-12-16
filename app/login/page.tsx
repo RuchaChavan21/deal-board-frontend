@@ -21,8 +21,26 @@ export default function LoginPage() {
     try {
       const response = await axiosInstance.post("/auth/login", { email, password })
       const token = response?.data?.token
+      const role = response?.data?.role || response?.data?.user?.role
+      const userId = response?.data?.user?.id || response?.data?.userId
+      const orgId =
+        response?.data?.orgId ||
+        response?.data?.organizationId ||
+        response?.data?.user?.orgId ||
+        response?.data?.user?.organizationId
       if (token) {
         localStorage.setItem("token", token)
+        if (role) {
+          localStorage.setItem("role", role)
+        }
+        if (userId) {
+          localStorage.setItem("userId", String(userId))
+        }
+        if (orgId) {
+          const orgIdString = String(orgId)
+          localStorage.setItem("orgId", orgIdString)
+          localStorage.setItem("currentOrgId", orgIdString)
+        }
         document.cookie = `token=${token}; path=/; SameSite=Lax`
         router.push("/app/dashboard")
       } else {

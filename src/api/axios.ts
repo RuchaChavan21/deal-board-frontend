@@ -1,4 +1,4 @@
-import axios, { AxiosHeaders } from "axios"
+import axios from "axios"
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -11,24 +11,30 @@ if (typeof window !== "undefined") {
   axiosInstance.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("token")
+      const role = localStorage.getItem("role")
+      const orgId = localStorage.getItem("currentOrgId")
       const userId = localStorage.getItem("userId")
-      const orgId = localStorage.getItem("orgId")
+
+      const headers: Record<string, string> =
+        (config.headers as Record<string, string> | undefined) ? { ...(config.headers as Record<string, string>) } : {}
 
       if (token) {
-        const headers = AxiosHeaders.from(config.headers || {})
-        headers.set("Authorization", `Bearer ${token}`)
-
-        if (userId) {
-          headers.set("X-USER-ID", userId)
-        }
-
-        if (orgId) {
-          headers.set("X-ORG-ID", orgId)
-        }
-
-        config.headers = headers
+        headers.Authorization = `Bearer ${token}`
       }
 
+      if (role) {
+        headers["X-ROLE"] = role
+      }
+
+      if (userId) {
+        headers["X-USER-ID"] = userId
+      }
+
+      if (orgId && !(config.url || "").includes("/orgs/my")) {
+        headers["X-ORG-ID"] = orgId
+      }
+
+      config.headers = headers as any
       return config
     },
     (error) => Promise.reject(error),

@@ -2,21 +2,30 @@
 
 import { useState, useEffect } from "react"
 import { ChevronDown, Building2, User } from "lucide-react"
-import { getOrganizations } from "../api/organizations"
-import type { Organization } from "../types"
+import { getMyOrganizations } from "../api/organizations"
+
+type OrgWithRole = {
+  id: string
+  name: string
+  role?: string
+  [key: string]: any
+}
 
 export const Header = () => {
-  const [organizations, setOrganizations] = useState<Organization[]>([])
+  const [organizations, setOrganizations] = useState<OrgWithRole[]>([])
   const [activeOrg, setActiveOrg] = useState<string>("")
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   useEffect(() => {
     const fetchOrganizations = async () => {
-      const orgs = await getOrganizations()
-      const orgArray = Array.isArray(orgs) ? orgs : []
+      const orgs = await getMyOrganizations()
+      const orgArray: OrgWithRole[] = Array.isArray(orgs) ? orgs : []
       setOrganizations(orgArray)
       if (orgArray.length > 0) {
-        const storedOrgId = localStorage.getItem("orgId") || localStorage.getItem("activeOrganizationId")
+        const storedOrgId =
+          localStorage.getItem("currentOrgId") ||
+          localStorage.getItem("orgId") ||
+          localStorage.getItem("activeOrganizationId")
         setActiveOrg(storedOrgId || orgArray[0].id)
       }
     }
@@ -24,16 +33,26 @@ export const Header = () => {
     fetchOrganizations()
   }, [])
 
-  const handleOrgChange = async (orgId: string) => {
+  const handleOrgChange = (org: OrgWithRole) => {
+    const orgId = org.id
+    const orgRole = org.role || org.memberRole || org.userRole
+
     setActiveOrg(orgId)
+    localStorage.setItem("currentOrgId", orgId)
     localStorage.setItem("orgId", orgId)
-    localStorage.setItem("activeOrganizationId", orgId)
+    if (orgRole) {
+      localStorage.setItem("currentOrgRole", orgRole)
+    }
+    document.cookie = `currentOrgId=${orgId}; path=/; SameSite=Lax`
     setIsDropdownOpen(false)
+    window.location.reload()
   }
 
-  const activeOrgName = Array.isArray(organizations)
-    ? organizations.find((org) => org.id === activeOrg)?.name || "Select Organization"
-    : "Select Organization"
+  const activeOrgData = Array.isArray(organizations)
+    ? organizations.find((org) => org.id === activeOrg)
+    : undefined
+
+  const activeOrgName = activeOrgData?.name || "Select Organization"
 
   return (
     <header className="h-16 bg-card border-b border-border flex items-center justify-between px-6">
@@ -47,18 +66,28 @@ export const Header = () => {
           <ChevronDown className="w-4 h-4 text-muted-foreground" />
         </button>
         {isDropdownOpen && organizations.length > 0 && (
-          <div className="absolute left-0 mt-2 w-64 bg-card border border-border rounded-lg shadow-lg z-10 overflow-hidden">
-            {organizations.map((org) => (
-              <button
-                key={org.id}
-                onClick={() => handleOrgChange(org.id)}
-                className={`block w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                  org.id === activeOrg ? "bg-primary/10 text-primary font-medium" : "text-foreground hover:bg-muted"
-                }`}
-              >
-                {org.name}
-              </button>
-            ))}
+          <div className="absolute left-0 mt-2 w-72 bg-card border border-border rounded-lg shadow-lg z-10 overflow-hidden">
+            {organizations.map((org) => {
+              const orgRole = org.role || org.memberRole || org.userRole
+              return (
+                <button
+                  key={org.id}
+                  onClick={() => handleOrgChange(org)}
+                  className={`block w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                    org.id === activeOrg ? "bg-primary/10 text-primary font-medium" : "text-foreground hover:bg-muted"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span>{org.name}</span>
+                    {orgRole && (
+                      <span className="ml-2 text-xs rounded-full px-2 py-0.5 bg-muted text-muted-foreground uppercase">
+                        {orgRole}
+                      </span>
+                    )}
+                  </div>
+                </button>
+              )
+            })}
           </div>
         )}
       </div>

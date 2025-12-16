@@ -4,6 +4,7 @@ import type React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { LayoutDashboard, Users, TrendingUp, CheckSquare, Building2, Settings } from "lucide-react"
+import { isAdmin } from "../utils/roles"
 
 interface NavItem {
   label: string
@@ -13,6 +14,7 @@ interface NavItem {
 
 export const Sidebar = () => {
   const pathname = usePathname()
+  const role = typeof window !== "undefined" ? localStorage.getItem("role") || "" : ""
 
   const navItems: NavItem[] = [
     {
@@ -40,11 +42,15 @@ export const Sidebar = () => {
       path: "/organizations",
       icon: <Building2 className="w-5 h-5" />,
     },
-    {
-      label: "Settings",
-      path: "/settings",
-      icon: <Settings className="w-5 h-5" />,
-    },
+    ...(isAdmin(role)
+      ? [
+          {
+            label: "Settings",
+            path: "/settings",
+            icon: <Settings className="w-5 h-5" />,
+          } satisfies NavItem,
+        ]
+      : []),
   ]
 
   const isActive = (path: string) => {
