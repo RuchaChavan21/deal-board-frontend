@@ -182,7 +182,6 @@
     --color-red-500: #fb2c36;
     --color-red-600: #e40014;
     --color-red-700: #bf000f;
-    --color-red-900: #82181a;
     --color-orange-50: #fff7ed;
     --color-orange-300: #ffb96d;
     --color-yellow-50: #fefce8;
@@ -278,7 +277,6 @@
       --color-red-500: lab(55.4814% 75.0732 48.8528);
       --color-red-600: lab(48.4493% 77.4328 61.5452);
       --color-red-700: lab(40.4273% 67.2623 53.7441);
-      --color-red-900: lab(28.5139% 44.5539 29.0463);
       --color-orange-50: lab(97.7008% 1.53738 5.90646);
       --color-orange-300: lab(80.8059% 21.7313 50.4455);
       --color-yellow-50: lab(98.6846% -1.79058 9.77662);
@@ -868,10 +866,6 @@
     margin-top: calc(var(--spacing) * 4);
   }
 
-  .mt-10 {
-    margin-top: calc(var(--spacing) * 10);
-  }
-
   .mt-12 {
     margin-top: calc(var(--spacing) * 12);
   }
@@ -1167,10 +1161,6 @@
     max-height: var(--radix-select-content-available-height);
   }
 
-  .max-h-64 {
-    max-height: calc(var(--spacing) * 64);
-  }
-
   .max-h-\[90vh\] {
     max-height: 90vh;
   }
@@ -1321,6 +1311,10 @@
 
   .max-w-7xl {
     max-width: var(--container-7xl);
+  }
+
+  .max-w-\[200px\] {
+    max-width: 200px;
   }
 
   .max-w-\[calc\(100\%-2rem\)\] {
@@ -1723,6 +1717,12 @@
     justify-self: flex-end;
   }
 
+  .truncate {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   .overflow-auto {
     overflow: auto;
   }
@@ -1817,11 +1817,6 @@
   .border-0 {
     border-style: var(--tw-border-style);
     border-width: 0;
-  }
-
-  .border-2 {
-    border-style: var(--tw-border-style);
-    border-width: 2px;
   }
 
   .border-\[1\.5px\] {
@@ -2654,10 +2649,6 @@
     overflow-wrap: break-word;
   }
 
-  .break-all {
-    word-break: break-all;
-  }
-
   .whitespace-nowrap {
     white-space: nowrap;
   }
@@ -2760,10 +2751,6 @@
     color: var(--color-red-600);
   }
 
-  .text-red-900 {
-    color: var(--color-red-900);
-  }
-
   .text-secondary-foreground {
     color: var(--secondary-foreground);
   }
@@ -2796,10 +2783,6 @@
 
   .uppercase {
     text-transform: uppercase;
-  }
-
-  .italic {
-    font-style: italic;
   }
 
   .tabular-nums {

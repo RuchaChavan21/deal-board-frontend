@@ -18,12 +18,15 @@ export default function TasksPage() {
   const [role, setRole] = useState<string>("")
   const [currentUserId, setCurrentUserId] = useState<string>("")
 
+  // Form data for creating a task
   const [formData, setFormData] = useState({
     title: "",
+    description: "",
     dealId: "",
+    customerId: "",
     assignedUserId: "",
     assignedUserName: "",
-    status: "pending" as const,
+    status: "TODO", // Updated default to match DB
     dueDate: "",
   })
 
@@ -31,9 +34,12 @@ export default function TasksPage() {
     setIsLoading(true)
     try {
       const data = await getTasks()
+      // Debug: see exactly what keys are coming back
+      console.log("Tasks Data:", data); 
+      
       const list = Array.isArray(data) ? data : []
       if (role === "USER" && currentUserId) {
-        setTasks(list.filter((task) => task.assignedUserId === currentUserId))
+        setTasks(list.filter((task) => String(task.assignedUserId) === String(currentUserId)))
       } else {
         setTasks(list)
       }
@@ -58,12 +64,15 @@ export default function TasksPage() {
     try {
       await createTask(formData)
       setIsModalOpen(false)
+      // Reset form
       setFormData({
         title: "",
+        description: "",
         dealId: "",
+        customerId: "",
         assignedUserId: "",
         assignedUserName: "",
-        status: "pending",
+        status: "TODO",
         dueDate: "",
       })
       fetchTasks()
@@ -73,54 +82,92 @@ export default function TasksPage() {
   }
 
   const handleMarkCompleted = async (taskId: string) => {
-    setTasks((prev) => prev.map((task) => (task.id === taskId ? { ...task, status: "completed" as const } : task)))
+    // Optimistic update
+    setTasks((prev) => prev.map((task) => (task.id === taskId ? { ...task, status: "COMPLETED" } : task)))
+    // You should probably call an API here to persist the change
   }
 
+  // --- UPDATED COLUMNS DEFINITION ---
   const columns = [
+    {
+      key: "id",
+      header: "ID",
+      render: (value: any) => <span className="text-gray-500 text-xs">#{value}</span>,
+    },
     {
       key: "title",
       header: "Title",
-      render: (_: any, row: Task) => (
-        <span className={row.status === "completed" ? "line-through text-gray-500" : ""}>{row.title}</span>
+      render: (_: any, row: any) => (
+        <div className="flex flex-col">
+           <span className={(row.status === "completed" || row.status === "COMPLETED") ? "line-through text-gray-500 font-medium" : "font-medium text-gray-900"}>
+             {row.title}
+           </span>
+        </div>
       ),
     },
     {
-      key: "dealTitle",
-      header: "Related Deal",
-      render: (value: string) => value || "-",
+      key: "description",
+      header: "Description",
+      render: (value: string) => <span className="text-sm text-gray-600 truncate max-w-[200px] block" title={value}>{value || "-"}</span>,
     },
     {
-      key: "assignedUserName",
+      key: "dealId", // Changed from dealTitle to dealId as per DB screenshot
+      header: "Deal ID",
+      render: (value: any) => value ? <span className="font-mono text-xs">{value}</span> : "-",
+    },
+    {
+        key: "customerId", 
+        header: "Cust ID",
+        render: (value: any) => value ? <span className="font-mono text-xs">{value}</span> : "-",
+    },
+    {
+        key: "organizationId", 
+        header: "Org ID",
+        render: (value: any) => value ? <span className="font-mono text-xs">{value}</span> : "-",
+    },
+    {
+      key: "assignedUserId", // Changed to ID as DB has 'assigned_to_user_id'
       header: "Assigned To",
+      render: (value: any, row: any) => row.assignedUserName || <span className="text-xs bg-gray-100 px-1 rounded">User {value}</span>,
     },
     {
       key: "status",
       header: "Status",
-      render: (value: string) => (
-        <span
-          className={`inline-flex px-2 py-1 text-xs font-medium rounded ${
-            value === "completed" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"
-          }`}
-        >
-          {value}
-        </span>
-      ),
+      render: (value: string) => {
+        // Handle variations like "TODO", "todo", "pending"
+        const normalized = value ? value.toUpperCase() : "UNKNOWN";
+        let colorClass = "bg-gray-100 text-gray-800";
+        
+        if (normalized === "COMPLETED" || normalized === "DONE") colorClass = "bg-green-100 text-green-800";
+        if (normalized === "TODO" || normalized === "PENDING") colorClass = "bg-blue-100 text-blue-800";
+        if (normalized === "IN_PROGRESS") colorClass = "bg-yellow-100 text-yellow-800";
+
+        return (
+          <span className={`inline-flex px-2 py-1 text-xs font-medium rounded ${colorClass}`}>
+            {value}
+          </span>
+        )
+      },
     },
     {
       key: "dueDate",
       header: "Due Date",
-      render: (value: string) => new Date(value).toLocaleDateString(),
+      render: (value: string) => value ? new Date(value).toLocaleDateString() : "-",
     },
     {
       key: "actions",
       header: "Actions",
-      render: (_: any, row: Task) => {
-        const isOwnTask = row.assignedUserId === currentUserId
-        if (row.status !== "pending") return null
+      render: (_: any, row: any) => {
+        const isOwnTask = String(row.assignedUserId) === String(currentUserId)
+        const isPending = row.status !== "completed" && row.status !== "COMPLETED";
+        
+        if (!isPending) return null
+        // Allow if admin or if it's your own task
         if (role === "USER" && !isOwnTask) return null
+        
         return (
           <Button variant="secondary" onClick={() => handleMarkCompleted(row.id)} className="text-xs py-1 px-2">
-            Mark Complete
+            Done
           </Button>
         )
       },
@@ -142,7 +189,8 @@ export default function TasksPage() {
         {canCreateTasks(role) && <Button onClick={() => setIsModalOpen(true)}>Create Task</Button>}
       </div>
 
-      <div className="bg-white rounded border border-gray-200">
+      <div className="bg-white rounded border border-gray-200 overflow-hidden">
+        {/* Pass columns to Table */}
         <Table columns={columns} data={tasks} />
       </div>
 
@@ -156,21 +204,26 @@ export default function TasksPage() {
               required
             />
             <Input
-              label="Deal ID (optional)"
-              value={formData.dealId}
-              onChange={(e) => setFormData({ ...formData, dealId: e.target.value })}
-              placeholder="Leave empty if not related to a deal"
+              label="Description"
+              value={formData.description}
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             />
+            <div className="grid grid-cols-2 gap-4">
+                <Input
+                label="Deal ID"
+                value={formData.dealId}
+                onChange={(e) => setFormData({ ...formData, dealId: e.target.value })}
+                />
+                <Input
+                label="Customer ID"
+                value={formData.customerId}
+                onChange={(e) => setFormData({ ...formData, customerId: e.target.value })}
+                />
+            </div>
             <Input
               label="Assigned User ID"
               value={formData.assignedUserId}
               onChange={(e) => setFormData({ ...formData, assignedUserId: e.target.value })}
-              required
-            />
-            <Input
-              label="Assigned User Name"
-              value={formData.assignedUserName}
-              onChange={(e) => setFormData({ ...formData, assignedUserName: e.target.value })}
               required
             />
             <Input
@@ -183,10 +236,11 @@ export default function TasksPage() {
             <Select
               label="Status"
               value={formData.status}
-              onChange={(e) => setFormData({ ...formData, status: e.target.value as "pending" | "completed" })}
+              onChange={(e) => setFormData({ ...formData, status: e.target.value })}
               options={[
-                { value: "pending", label: "Pending" },
-                { value: "completed", label: "Completed" },
+                { value: "TODO", label: "To Do" },
+                { value: "IN_PROGRESS", label: "In Progress" },
+                { value: "COMPLETED", label: "Completed" },
               ]}
             />
             <div className="flex gap-3 pt-4">
