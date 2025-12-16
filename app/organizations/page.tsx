@@ -8,16 +8,21 @@ import { Modal } from "../../src/components/Modal"
 import { Input } from "../../src/components/Input"
 import { useToast } from "../../hooks/use-toast"
 
-type OrgWithRole = {
+// Universal type that matches whatever comes back
+type UniversalOrg = {
   id: string
   name: string
   description?: string
   role?: string
+  // Allow for nested structures
+  organization?: any
+  org?: any
   [key: string]: any
 }
 
 export default function OrganizationsPage() {
-  const [organizations, setOrganizations] = useState<OrgWithRole[]>([])
+  const [organizations, setOrganizations] = useState<UniversalOrg[]>([])
+  const [rawDebugData, setRawDebugData] = useState<any>(null) // To see raw JSON
   const [isLoading, setIsLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [activeOrgId, setActiveOrgId] = useState("")
@@ -32,15 +37,28 @@ export default function OrganizationsPage() {
     setIsLoading(true)
     try {
       const data = await getMyOrganizations()
-      const list: OrgWithRole[] = Array.isArray(data) ? data : []
+      console.log("Backend Response:", data) 
+
+      const list = Array.isArray(data) ? data.map((item: any) => {
+        // STRATEGY: Try to find the info wherever it is hiding
+        const orgObj = item.organization || item.org || item;
+
+        return {
+          // Use the nested ID if available, otherwise top-level ID
+          id: orgObj.id || item.id,
+          // Use nested Name, otherwise top-level Name
+          name: orgObj.name || item.name || "Unknown Name",
+          description: orgObj.description || item.description,
+          // Role usually stays on the top member object
+          role: item.role || item.memberRole || orgObj.role, 
+        }
+      }) : []
+
       setOrganizations(list)
-      const storedOrgId =
-        localStorage.getItem("currentOrgId") ||
-        localStorage.getItem("orgId") ||
-        localStorage.getItem("activeOrganizationId")
-      if (storedOrgId) {
-        setActiveOrgId(storedOrgId)
-      }
+
+      const storedOrgId = localStorage.getItem("currentOrgId")
+      if (storedOrgId) setActiveOrgId(storedOrgId)
+
     } catch (error) {
       console.error("Failed to fetch organizations:", error)
       setOrganizations([])
@@ -63,40 +81,21 @@ export default function OrganizationsPage() {
       await fetchOrganizations()
       setIsModalOpen(false)
       setFormData({ name: "", description: "" })
-      toast({
-        title: "Organization created",
-        description: "You can now switch to it from the list.",
-      })
+      toast({ title: "Organization created" })
     } catch (error) {
       console.error("Failed to create organization:", error)
-      toast({
-        title: "Unable to create organization",
-        description: "Please try again or check your connection.",
-      })
+      toast({ title: "Error creating organization" })
     }
   }
 
   const handleSetActive = async (orgId: string) => {
-    const org = organizations.find((o) => o.id === orgId)
-    const orgRole = org?.role || org?.memberRole || org?.userRole
-
     setActiveOrgId(orgId)
     localStorage.setItem("currentOrgId", orgId)
-    localStorage.setItem("orgId", orgId)
-    if (orgRole) {
-      localStorage.setItem("currentOrgRole", orgRole)
-    }
     document.cookie = `currentOrgId=${orgId}; path=/; SameSite=Lax`
     window.location.reload()
   }
 
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-full">
-        <div className="text-gray-600">Loading organizations...</div>
-      </div>
-    )
-  }
+  if (isLoading) return <div className="p-10">Loading...</div>
 
   return (
     <div className="space-y-6">
@@ -104,7 +103,7 @@ export default function OrganizationsPage() {
         <div>
           <h1 className="text-2xl font-semibold text-gray-900">Organizations</h1>
           <p className="text-sm text-gray-500 mt-1">
-            Switch between organizations you belong to or create a new one.
+            Switch between organizations you belong to.
           </p>
         </div>
         <Button onClick={() => setIsModalOpen(true)}>Create Organization</Button>
@@ -114,26 +113,33 @@ export default function OrganizationsPage() {
         {organizations.length === 0 ? (
           <div className="col-span-full text-center text-gray-500 py-12">No organizations found</div>
         ) : (
-          organizations.map((org) => (
-          <div key={org.id} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900">{org.name}</h3>
-                  {org.description && <p className="text-sm text-gray-600 mt-2">{org.description}</p>}
-                  {(org.role || org.memberRole || org.userRole) && (
-                    <p className="text-xs text-gray-500 mt-1 uppercase">
-                      Role: {org.role || org.memberRole || org.userRole}
-                    </p>
+          organizations.map((org, index) => (
+            <div key={`${org.id}-${index}`} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex flex-col justify-between">
+              <div className="mb-4">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-lg font-bold text-gray-900">{org.name}</h3>
+                  {activeOrgId === String(org.id) && (
+                    <span className="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">Active</span>
                   )}
                 </div>
-                {activeOrgId === org.id && (
-                  <span className="ml-2 inline-flex px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded">
-                    Active
-                  </span>
+                
+                <div className="mt-2 text-xs text-gray-500">
+                    ID: <span className="font-mono bg-gray-100 p-1">{org.id}</span>
+                </div>
+                
+                <p className="text-sm text-gray-600 mt-2">
+                  {org.description || "No description"}
+                </p>
+                
+                {org.role && (
+                  <p className="text-xs text-gray-500 mt-2 border-t pt-2 uppercase font-semibold">
+                    Role: {org.role}
+                  </p>
                 )}
               </div>
-              {activeOrgId !== org.id && (
-                <Button variant="secondary" onClick={() => handleSetActive(org.id)} className="w-full">
+
+              {activeOrgId !== String(org.id) && (
+                <Button variant="secondary" onClick={() => handleSetActive(String(org.id))} className="w-full">
                   Switch to This Organization
                 </Button>
               )}
@@ -142,31 +148,24 @@ export default function OrganizationsPage() {
         )}
       </div>
 
+      
+
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Create Organization">
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
-            label="Organization Name"
+            label="Name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
           />
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Description (optional)</label>
-            <textarea
-              value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
-              rows={3}
-              placeholder="Enter organization description"
-            />
-          </div>
+          <textarea
+            value={formData.description}
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            className="w-full border p-2 rounded"
+            placeholder="Description"
+          />
           <div className="flex gap-3 pt-4">
-            <Button type="button" variant="secondary" onClick={() => setIsModalOpen(false)} className="flex-1">
-              Cancel
-            </Button>
-            <Button type="submit" className="flex-1">
-              Create
-            </Button>
+             <Button type="submit" className="w-full">Create</Button>
           </div>
         </form>
       </Modal>

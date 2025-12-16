@@ -144,15 +144,8 @@ export default function LandingPage() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-base px-8 h-12 rounded-xl bg-transparent border border-white/70 text-white hover:bg-white/10 hover:text-white"
-              >
-                Request Demo
-              </Button>
+              
             </div>
-            <p className="text-sm text-white/70 mt-6">No credit card required · 14-day free trial</p>
           </div>
         </div>
       </section>
