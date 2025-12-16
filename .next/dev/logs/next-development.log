@@ -1,33 +1,1182 @@
-[00:00:03.306] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:03.865] Server  LOG      ✓ Ready in 2.8s
-[00:00:10.064] Server  LOG      ○ Compiling /deals ...
-[00:00:17.093] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:18.357] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:18.357] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/deals","route":"/deals"}
-[00:00:18.357] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/deals color: rgb(120, 120, 120) color: inherit {"dp":"/deals","o":"http://localhost:3000/deals","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908013813}
-[00:00:24.645] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:00:24.645] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908020921}
-[00:00:26.249] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/deals color: rgb(120, 120, 120) color: inherit {"dp":"/deals","o":"http://localhost:3000/deals","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908022525}
-[00:00:29.126] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908025313}
-[00:00:29.196] Browser LOG     Backend Response: [{"description":"Internal sales and deal management organization","id":1,"name":"Apex solutions"},{"description":"Organization for handling enterprise sales pipelines and client operations.","id":2,"name":"Orion Enterprises"},{"description":"sales and Deals management ","id":3,"name":"Apex solutions "}]
-[00:00:29.196] Browser LOG     Backend Response: [{"description":"Internal sales and deal management organization","id":1,"name":"Apex solutions"},{"description":"Organization for handling enterprise sales pipelines and client operations.","id":2,"name":"Orion Enterprises"},{"description":"sales and Deals management ","id":3,"name":"Apex solutions "}]
-[00:00:31.607] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908027887}
-[00:00:50.888] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908047165}
-[00:00:55.435] Browser ERROR   Failed to load profile: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:8080","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY1OTAzMTIxLCJleHAiOjE3NjU5ODk1MjF9.5fXn7qKYlXHcqzA7QqfSzRtDXCOn31A9f1oRjuzHkA4","Content-Type":"application/json","X-ORG-ID":"2","X-ROLE":"ADMIN","X-USER-ID":"user_lfa7z3e6h"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/users/me","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_e1d86944._.js:5370:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_e1d86944._.js:5885:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_e1d86944._.js:6689:49)\n    at async getMyProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:14:22)\n    at async ProfilePage.useEffect.fetchProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:68:38)","status":500}
-[00:00:55.597] Browser ERROR   Failed to load profile: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:8080","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY1OTAzMTIxLCJleHAiOjE3NjU5ODk1MjF9.5fXn7qKYlXHcqzA7QqfSzRtDXCOn31A9f1oRjuzHkA4","Content-Type":"application/json","X-ORG-ID":"2","X-ROLE":"ADMIN","X-USER-ID":"user_lfa7z3e6h"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/users/me","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_e1d86944._.js:5370:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_e1d86944._.js:5885:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_e1d86944._.js:6689:49)\n    at async getMyProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:14:22)\n    at async ProfilePage.useEffect.fetchProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:68:38)","status":500}
-[00:01:27.195] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908083459}
-[00:01:30.680] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908086961}
-[00:01:36.150] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:36.377] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:36.378] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/app/dashboard","route":"/app/dashboard"}
-[00:01:36.378] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/app/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/app/dashboard","o":"http://localhost:3000/app/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908092650}
-[00:01:40.661] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:01:40.661] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908096943}
-[00:01:44.028] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908100131}
-[00:01:44.029] Browser ERROR   Failed to load profile: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:8080","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY1OTA4MDkwLCJleHAiOjE3NjU5OTQ0OTB9.Pf17Wu7dhe-9bH0YKtxUxmKgNxbYOR2RzxW7adZi_I8","Content-Type":"application/json","X-ORG-ID":"2","X-ROLE":"ADMIN","X-USER-ID":"user_lfa7z3e6h"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/users/me","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_1d126d39._.js:5370:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_1d126d39._.js:5885:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_1d126d39._.js:6689:49)\n    at async getMyProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:14:22)\n    at async ProfilePage.useEffect.fetchProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:68:38)","status":500}
-[00:01:44.029] Browser ERROR   Failed to load profile: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:8080","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY1OTA4MDkwLCJleHAiOjE3NjU5OTQ0OTB9.Pf17Wu7dhe-9bH0YKtxUxmKgNxbYOR2RzxW7adZi_I8","Content-Type":"application/json","X-ORG-ID":"2","X-ROLE":"ADMIN","X-USER-ID":"user_lfa7z3e6h"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/users/me","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_1d126d39._.js:5370:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_1d126d39._.js:5885:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_1d126d39._.js:6689:49)\n    at async getMyProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:14:22)\n    at async ProfilePage.useEffect.fetchProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:68:38)","status":500}
-[00:03:22.957] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:23.308] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:03:23.308] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/profile","route":"/profile"}
-[00:03:23.308] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908199504}
-[00:03:23.308] Browser ERROR   Failed to load profile: {"code":"ERR_BAD_RESPONSE","config":{"adapter":["xhr","http","fetch"],"allowAbsoluteUrls":true,"baseURL":"http://localhost:8080","env":{},"headers":{"Accept":"application/json, text/plain, */*","Authorization":"Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY1OTA4MDkwLCJleHAiOjE3NjU5OTQ0OTB9.Pf17Wu7dhe-9bH0YKtxUxmKgNxbYOR2RzxW7adZi_I8","Content-Type":"application/json","X-ORG-ID":"2","X-ROLE":"ADMIN","X-USER-ID":"user_lfa7z3e6h"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"/users/me","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"Request failed with status code 500","name":"AxiosError","stack":"AxiosError: Request failed with status code 500\n    at settle (http://localhost:3000/_next/static/chunks/node_modules_e1d86944._.js:5370:16)\n    at XMLHttpRequest.onloadend (http://localhost:3000/_next/static/chunks/node_modules_e1d86944._.js:5885:174)\n    at Axios.request (http://localhost:3000/_next/static/chunks/node_modules_e1d86944._.js:6689:49)\n    at async getMyProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:14:22)\n    at async ProfilePage.useEffect.fetchProfile (http://localhost:3000/_next/static/chunks/_6d0badfa._.js:68:38)","status":500}
+[00:00:04.470] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:05.483] Server  LOG      ✓ Ready in 4.1s
+[00:00:22.748] Server  LOG      ○ Compiling / ...
+[00:00:31.266] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:31.266] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:31.266] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908611084}
+[00:00:41.032] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:41.032] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908620835}
+[00:06:05.818] Server  LOG      ○ Compiling /_not-found/page ...
+[00:06:11.441] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:06:11.441] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/app/dashboard","route":"/app/dashboard"}
+[00:06:11.441] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/app/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/app/dashboard","o":"http://localhost:3000/app/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908951265}
+[00:06:18.416] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:06:18.416] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908958240}
+[00:06:24.696] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908964530}
+[00:06:49.656] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908989487}
+[00:06:49.838] Browser LOG     Backend Response: [{"description":"internal sales and deal management org","id":1,"name":"apex-solutions"}]
+[00:06:49.838] Browser LOG     Backend Response: [{"description":"internal sales and deal management org","id":1,"name":"apex-solutions"}]
+[00:06:56.910] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:07:00.225] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:07:00.225] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:07:00.225] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765908999985}
+[00:07:00.226] Browser LOG     Backend Response: [{"description":"internal sales and deal management org","id":1,"name":"apex-solutions"}]
+[00:07:02.003] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:07:03.637] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:07:03.637] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:07:03.638] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765909003432}
+[00:07:03.638] Browser LOG     Backend Response: [{"description":"internal sales and deal management org","id":1,"name":"apex-solutions"}]
+[00:07:05.086] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:07:06.763] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:07:06.763] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:07:06.763] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765909006552}
+[00:07:06.763] Browser LOG     Backend Response: [{"description":"internal sales and deal management org","id":1,"name":"apex-solutions"}]
+[00:07:11.478] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:07:11.478] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765909011297}
+[00:07:14.357] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/deals color: rgb(120, 120, 120) color: inherit {"dp":"/deals","o":"http://localhost:3000/deals","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765909014188}
+[00:15:28.981] Server  LOG      ✓ Compiled in 3.7s
+[00:15:30.317] Browser ERROR   ./app/organizations/page.tsx:36:3
+Parsing ecmascript source code failed
+  34 |   })
+  35 |
+> 36 |   export const addMemberToOrganization = async (orgId: string, userId: string, role: string) => {
+     |   ^^^^^^
+  37 |   // Matches @PostMapping("/{orgId}/members") in your Java Controller
+  38 |   const response = await axiosInstance.post(`/orgs/${orgId}/members`, {
+  39 |     userId, // Backend expects Map<String, String> with "userId"
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:15:32.228] Server  LOG      ✓ Compiled in 946ms
+[00:15:55.540] Server  LOG      ✓ Compiled in 2.2s
+[00:16:41.513] Server  LOG      ✓ Compiled in 1909ms
+[00:16:43.953] Server  LOG      ✓ Compiled in 315ms
+[00:16:58.885] Server  LOG      ✓ Compiled in 303ms
+[00:17:12.923] Server  LOG      ✓ Compiled in 1042ms
+[00:17:34.287] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:17:34.288] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/deals","route":"/deals"}
+[00:17:34.288] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/deals color: rgb(120, 120, 120) color: inherit {"dp":"/deals","o":"http://localhost:3000/deals","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765909634124}
+[00:17:44.950] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:17:44.950] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765909644773}
+[00:17:45.064] Server  LOG      ○ Compiling /tasks ...
+[00:17:48.170] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:25:16.094] Server  LOG      ✓ Compiled in 2.5s
+[00:25:17.339] Browser ERROR   ./src/api/organizations.ts:19:8
+Ecmascript file had an error
+  17 |
+  18 |
+> 19 | import axiosInstance from "./axios"
+     |        ^^^^^^^^^^^^^
+  20 | import type { Customer } from "../types" // Assuming you have this type defined
+  21 |
+  22 | // Get customers for the CURRENT Organization
+
+the name `axiosInstance` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/api/organizations.ts [Client Component Browser]
+    ./src/layouts/Header.tsx [Client Component Browser]
+    ./src/layouts/MainLayout.tsx [Client Component Browser]
+    ./src/layouts/MainLayout.tsx [Server Component]
+    ./app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/api/organizations.ts [Client Component SSR]
+    ./src/layouts/Header.tsx [Client Component SSR]
+    ./src/layouts/MainLayout.tsx [Client Component SSR]
+    ./src/layouts/MainLayout.tsx [Server Component]
+    ./app/layout.tsx [Server Component]
+[00:25:17.340] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:17.343] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:19.557] Server  LOG      ✓ Compiled in 274ms
+[00:25:20.341] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:20.341] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:22.307] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:22.307] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:22.307] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:22.307] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:25.302] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:25.302] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:25:53.230] Server  LOG      ✓ Compiled in 3.6s
+[00:25:58.034] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./app/organizations/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:25:58.808] Server  LOG      ✓ Compiled in 513ms
+[00:26:01.274] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./app/organizations/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:26:04.307] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:04.307] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:26:04.307] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910143538}
+[00:26:11.102] Browser LOG     Fetched Customers: [{"email":"contact@acme.com","id":1,"name":"Acme Corporation","organizationId":1,"ownerUserId":2,"phone":"8888888888","status":"LEAD"},{"email":"rucha@crm.com","id":2,"name":"rucha","organizationId":1,"ownerUserId":2,"phone":"1111111111","status":"LEAD"}]
+[00:26:13.917] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:26:23.147] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:26:23.147] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:26:25.190] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:25.190] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:26:25.191] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910164964}
+[00:26:25.191] Browser LOG     Fetched Customers: [{"email":"contact@acme.com","id":1,"name":"Acme Corporation","organizationId":1,"ownerUserId":2,"phone":"8888888888","status":"LEAD"},{"email":"rucha@crm.com","id":2,"name":"rucha","organizationId":1,"ownerUserId":2,"phone":"1111111111","status":"LEAD"}]
+[00:26:26.594] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:26:26.594] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:26:28.367] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:28.368] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:26:28.368] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910168136}
+[00:26:28.368] Browser LOG     Fetched Customers: [{"email":"contact@acme.com","id":1,"name":"Acme Corporation","organizationId":1,"ownerUserId":2,"phone":"8888888888","status":"LEAD"},{"email":"rucha@crm.com","id":2,"name":"rucha","organizationId":1,"ownerUserId":2,"phone":"1111111111","status":"LEAD"}]
+[00:26:30.276] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:26:30.276] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:26:32.372] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:32.372] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:26:32.372] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910172202}
+[00:26:32.667] Browser LOG     Fetched Customers: [{"email":"contact@acme.com","id":1,"name":"Acme Corporation","organizationId":1,"ownerUserId":2,"phone":"8888888888","status":"LEAD"},{"email":"rucha@crm.com","id":2,"name":"rucha","organizationId":1,"ownerUserId":2,"phone":"1111111111","status":"LEAD"}]
+[00:27:01.644] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:27:01.646] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:27:20.534] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:27:20.534] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:27:20.534] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910220370}
+[00:27:21.303] Browser LOG     Fetched Customers: [{"email":"contact@acme.com","id":1,"name":"Acme Corporation","organizationId":1,"ownerUserId":2,"phone":"8888888888","status":"LEAD"},{"email":"rucha@crm.com","id":2,"name":"rucha","organizationId":1,"ownerUserId":2,"phone":"1111111111","status":"LEAD"}]
+[00:27:24.894] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:27:24.894] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tasks color: rgb(120, 120, 120) color: inherit {"dp":"/tasks","o":"http://localhost:3000/tasks","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910224723}
+[00:27:33.494] Server  LOG      ○ Compiling /customers ...
+[00:27:37.016] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910236851}
+[00:27:40.972] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:27:40.972] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:27:43.262] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:27:43.263] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/customers","route":"/customers"}
+[00:27:43.263] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910243086}
+[00:27:54.642] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:27:54.643] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:27:59.857] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:27:59.857] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910259689}
+[00:28:04.403] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910264234}
+[00:28:17.303] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:28:17.304] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:28:17.304] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:28:17.304] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:28:31.308] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+  4 | import { useState, useEffect } from "react"
+  5 | // CHANGED: Imported addMemberToOrganization
+> 6 | import { getOrganizations, createOrganization, addMemberToOrganization } from "../../src/api/organizations"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Button } from "../../src/components/Button"
+  8 | import { Modal } from "../../src/components/Modal"
+  9 | import { Input } from "../../src/components/Input"
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:28:31.309] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+  4 | import { useState, useEffect } from "react"
+  5 | // CHANGED: Imported addMemberToOrganization
+> 6 | import { getOrganizations, createOrganization, addMemberToOrganization } from "../../src/api/organizations"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Button } from "../../src/components/Button"
+  8 | import { Modal } from "../../src/components/Modal"
+  9 | import { Input } from "../../src/components/Input"
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:28:32.304] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:28:32.304] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:13.428] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+  4 | import { useState, useEffect } from "react"
+  5 | // CHANGED: Imported addMemberToOrganization
+> 6 | import { getOrganizations, createOrganization, addMemberToOrganization } from "../../src/api/organizations"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Button } from "../../src/components/Button"
+  8 | import { Modal } from "../../src/components/Modal"
+  9 | import { Input } from "../../src/components/Input"
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:13.429] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+  4 | import { useState, useEffect } from "react"
+  5 | // CHANGED: Imported addMemberToOrganization
+> 6 | import { getOrganizations, createOrganization, addMemberToOrganization } from "../../src/api/organizations"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Button } from "../../src/components/Button"
+  8 | import { Modal } from "../../src/components/Modal"
+  9 | import { Input } from "../../src/components/Input"
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:13.430] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:13.430] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:23.245] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:23.245] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:26.187] Server  LOG      ○ Compiling /_error ...
+[00:29:27.206] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:27.207] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:27.857] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:27.857] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:30.281] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:30.281] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:31.133] Browser ERROR   uncaughtError: Error: ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+
+
+[00:29:31.263] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:31.263] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:31.538] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-client] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:29:31.538] Browser ERROR   ./app/organizations/page.tsx:6:1
+Export addMemberToOrganization doesn't exist in target module
+   4 | import { useState, useEffect } from "react";
+   5 | // CHANGED: Imported addMemberToOrganization
+>  6 | import {
+     | ^^^^^^^^
+>  7 |   getOrganizations,
+     | ^^^^^^^^^^^^^^^^^^^
+>  8 |   createOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |   addMemberToOrganization,
+     | ^^^^^^^^^^^^^^^^^^^
+> 10 | } from "../../src/api/organizations";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  11 | import { Button } from "../../src/components/Button";
+  12 | import { Modal } from "../../src/components/Modal";
+  13 | import { Input } from "../../src/components/Input";
+
+The export addMemberToOrganization was not found in module [project]/src/api/organizations.ts [app-ssr] (ecmascript).
+Did you mean to import createOrganization?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/organizations/page.tsx [Client Component Browser]
+    ./app/organizations/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/organizations/page.tsx [Client Component SSR]
+    ./app/organizations/page.tsx [Server Component]
+[00:30:18.486] Server  LOG      ✓ Compiled in 1281ms
+[00:30:27.786] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:30:27.786] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/customers","route":"/customers"}
+[00:30:27.786] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910407228}
+[00:30:33.272] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:30:33.272] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910413093}
+[00:30:37.419] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:30:37.419] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:30:39.647] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:30:39.647] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:30:39.647] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910419484}
+[00:30:42.766] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:30:42.766] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
+[00:30:44.234] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:30:44.234] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
+[00:30:44.234] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765910424069}

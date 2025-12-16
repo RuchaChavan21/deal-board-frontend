@@ -1,136 +1,191 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useEffect } from "react"
-import { getOrganizations, createOrganization } from "../../src/api/organizations"
-import { Button } from "../../src/components/Button"
-import { Modal } from "../../src/components/Modal"
-import { Input } from "../../src/components/Input"
-import { useToast } from "../../hooks/use-toast"
+import type React from "react";
+import { useState, useEffect } from "react";
+// CHANGED: Imported addMemberToOrganization
+import {
+  getOrganizations,
+  createOrganization,
+  addMemberToOrganization,
+} from "../../src/api/organizations";
+import { Button } from "../../src/components/Button";
+import { Modal } from "../../src/components/Modal";
+import { Input } from "../../src/components/Input";
+// CHANGED: Imported Select for the role dropdown
+import { Select } from "../../src/components/Select";
+import { useToast } from "../../hooks/use-toast";
+import { UserPlus } from "lucide-react"; // Optional icon
 
-// Universal type that matches whatever comes back
 type UniversalOrg = {
-  id: string
-  name: string
-  description?: string
-  role?: string
-  // Allow for nested structures
-  organization?: any
-  org?: any
-  [key: string]: any
-}
+  id: string;
+  name: string;
+  description?: string;
+  role?: string;
+  organization?: any;
+  org?: any;
+  [key: string]: any;
+};
 
 export default function OrganizationsPage() {
-  const [organizations, setOrganizations] = useState<UniversalOrg[]>([])
-  const [rawDebugData, setRawDebugData] = useState<any>(null) // To see raw JSON
-  const [isLoading, setIsLoading] = useState(true)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [activeOrgId, setActiveOrgId] = useState("")
-  const { toast } = useToast()
+  const [organizations, setOrganizations] = useState<UniversalOrg[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [formData, setFormData] = useState({
+  // State for Create Org Modal
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+
+  // State for Add Member Modal
+  const [isAddMemberModalOpen, setIsAddMemberModalOpen] = useState(false);
+  const [targetOrgId, setTargetOrgId] = useState<string | null>(null);
+
+  const [activeOrgId, setActiveOrgId] = useState("");
+  const { toast } = useToast();
+
+  // Form Data for Create Org
+  const [createFormData, setCreateFormData] = useState({
     name: "",
     description: "",
-  })
+  });
+
+  // Form Data for Add Member
+  const [memberFormData, setMemberFormData] = useState({
+    userId: "",
+    role: "USER",
+  });
 
   const fetchOrganizations = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      const data = await getOrganizations()
-      console.log("Backend Response:", data) 
+      const data = await getOrganizations();
+      const list = Array.isArray(data)
+        ? data.map((item: any) => {
+            const orgObj = item.organization || item.org || item;
+            return {
+              id: orgObj.id || item.id,
+              name: orgObj.name || item.name || "Unknown Name",
+              description: orgObj.description || item.description,
+              role: item.role || item.memberRole || orgObj.role,
+            };
+          })
+        : [];
 
-      const list = Array.isArray(data) ? data.map((item: any) => {
-        // STRATEGY: Try to find the info wherever it is hiding
-        const orgObj = item.organization || item.org || item;
-
-        return {
-          // Use the nested ID if available, otherwise top-level ID
-          id: orgObj.id || item.id,
-          // Use nested Name, otherwise top-level Name
-          name: orgObj.name || item.name || "Unknown Name",
-          description: orgObj.description || item.description,
-          // Role usually stays on the top member object
-          role: item.role || item.memberRole || orgObj.role, 
-        }
-      }) : []
-
-      setOrganizations(list)
-
-      const storedOrgId = localStorage.getItem("currentOrgId")
-      if (storedOrgId) setActiveOrgId(storedOrgId)
-
+      setOrganizations(list);
+      const storedOrgId = localStorage.getItem("currentOrgId");
+      if (storedOrgId) setActiveOrgId(storedOrgId);
     } catch (error) {
-      console.error("Failed to fetch organizations:", error)
-      setOrganizations([])
+      console.error("Failed to fetch organizations:", error);
+      setOrganizations([]);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchOrganizations()
-  }, [])
+    fetchOrganizations();
+  }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  // Handle Create Organization
+  const handleCreateSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
       await createOrganization({
-        name: formData.name,
-        description: formData.description || undefined,
-      })
-      await fetchOrganizations()
-      setIsModalOpen(false)
-      setFormData({ name: "", description: "" })
-      toast({ title: "Organization created" })
+        name: createFormData.name,
+        description: createFormData.description || undefined,
+      });
+      await fetchOrganizations();
+      setIsCreateModalOpen(false);
+      setCreateFormData({ name: "", description: "" });
+      toast({ title: "Organization created" });
     } catch (error) {
-      console.error("Failed to create organization:", error)
-      toast({ title: "Error creating organization" })
+      console.error("Failed to create organization:", error);
+      toast({ title: "Error creating organization" });
     }
-  }
+  };
+
+  // Handle Add Member
+  const handleAddMemberSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!targetOrgId) return;
+
+    try {
+      await addMemberToOrganization(
+        targetOrgId,
+        memberFormData.userId,
+        memberFormData.role
+      );
+      setIsAddMemberModalOpen(false);
+      setMemberFormData({ userId: "", role: "USER" }); // Reset form
+      toast({ title: "Member added successfully" });
+    } catch (error) {
+      console.error("Failed to add member:", error);
+      toast({
+        title: "Failed to add member",
+        description: "Check if the User ID exists.",
+      });
+    }
+  };
+
+  const openAddMemberModal = (orgId: string) => {
+    setTargetOrgId(orgId);
+    setIsAddMemberModalOpen(true);
+  };
 
   const handleSetActive = async (orgId: string) => {
-    setActiveOrgId(orgId)
-    localStorage.setItem("currentOrgId", orgId)
-    document.cookie = `currentOrgId=${orgId}; path=/; SameSite=Lax`
-    window.location.reload()
-  }
+    setActiveOrgId(orgId);
+    localStorage.setItem("currentOrgId", orgId);
+    document.cookie = `currentOrgId=${orgId}; path=/; SameSite=Lax`;
+    window.location.reload();
+  };
 
-  if (isLoading) return <div className="p-10">Loading...</div>
+  if (isLoading) return <div className="p-10">Loading...</div>;
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Organizations</h1>
+          <h1 className="text-2xl font-semibold text-gray-900">
+            Organizations
+          </h1>
           <p className="text-sm text-gray-500 mt-1">
-            Switch between organizations you belong to.
+            Switch between organizations or manage members.
           </p>
         </div>
-        <Button onClick={() => setIsModalOpen(true)}>Create Organization</Button>
+        <Button onClick={() => setIsCreateModalOpen(true)}>
+          Create Organization
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {organizations.length === 0 ? (
-          <div className="col-span-full text-center text-gray-500 py-12">No organizations found</div>
+          <div className="col-span-full text-center text-gray-500 py-12">
+            No organizations found
+          </div>
         ) : (
           organizations.map((org, index) => (
-            <div key={`${org.id}-${index}`} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex flex-col justify-between">
+            <div
+              key={`${org.id}-${index}`}
+              className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex flex-col justify-between"
+            >
               <div className="mb-4">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-lg font-bold text-gray-900">{org.name}</h3>
+                  <h3 className="text-lg font-bold text-gray-900">
+                    {org.name}
+                  </h3>
                   {activeOrgId === String(org.id) && (
-                    <span className="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">Active</span>
+                    <span className="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
+                      Active
+                    </span>
                   )}
                 </div>
-                
+
                 <div className="mt-2 text-xs text-gray-500">
-                    ID: <span className="font-mono bg-gray-100 p-1">{org.id}</span>
+                  ID:{" "}
+                  <span className="font-mono bg-gray-100 p-1">{org.id}</span>
                 </div>
-                
-                <p className="text-sm text-gray-600 mt-2">
+
+                <p className="text-sm text-gray-600 mt-2 line-clamp-2">
                   {org.description || "No description"}
                 </p>
-                
+
                 {org.role && (
                   <p className="text-xs text-gray-500 mt-2 border-t pt-2 uppercase font-semibold">
                     Role: {org.role}
@@ -138,37 +193,119 @@ export default function OrganizationsPage() {
                 )}
               </div>
 
-              {activeOrgId !== String(org.id) && (
-                <Button variant="secondary" onClick={() => handleSetActive(String(org.id))} className="w-full">
-                  Switch to This Organization
+              <div className="space-y-2 mt-auto">
+                {activeOrgId !== String(org.id) ? (
+                  <Button
+                    variant="secondary"
+                    onClick={() => handleSetActive(String(org.id))}
+                    className="w-full"
+                  >
+                    Switch to This Organization
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outline"
+                    className="w-full border-blue-200 bg-blue-50 text-blue-700 pointer-events-none"
+                  >
+                    Currently Active
+                  </Button>
+                )}
+
+                {/* Add Member Button */}
+                <Button
+                  variant="outline"
+                  onClick={() => openAddMemberModal(String(org.id))}
+                  className="w-full flex items-center justify-center gap-2"
+                >
+                  <UserPlus className="w-4 h-4" /> Add Member
                 </Button>
-              )}
+              </div>
             </div>
           ))
         )}
       </div>
 
-      
-
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Create Organization">
-        <form onSubmit={handleSubmit} className="space-y-4">
+      {/* CREATE ORG MODAL */}
+      <Modal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        title="Create Organization"
+      >
+        <form onSubmit={handleCreateSubmit} className="space-y-4">
           <Input
             label="Name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={createFormData.name}
+            onChange={(e) =>
+              setCreateFormData({ ...createFormData, name: e.target.value })
+            }
             required
           />
           <textarea
-            value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full border p-2 rounded"
-            placeholder="Description"
+            value={createFormData.description}
+            onChange={(e) =>
+              setCreateFormData({
+                ...createFormData,
+                description: e.target.value,
+              })
+            }
+            className="w-full border p-2 rounded text-sm"
+            placeholder="Description (optional)"
+            rows={3}
           />
           <div className="flex gap-3 pt-4">
-             <Button type="submit" className="w-full">Create</Button>
+            <Button type="submit" className="w-full">
+              Create
+            </Button>
+          </div>
+        </form>
+      </Modal>
+
+      {/* ADD MEMBER MODAL */}
+      <Modal
+        isOpen={isAddMemberModalOpen}
+        onClose={() => setIsAddMemberModalOpen(false)}
+        title="Add Member to Organization"
+      >
+        <form onSubmit={handleAddMemberSubmit} className="space-y-4">
+          <div className="bg-yellow-50 text-yellow-800 p-3 rounded text-xs mb-2">
+            Adding user to Organization ID: <strong>{targetOrgId}</strong>
+          </div>
+          <Input
+            label="User ID"
+            value={memberFormData.userId}
+            onChange={(e) =>
+              setMemberFormData({ ...memberFormData, userId: e.target.value })
+            }
+            placeholder="e.g. 101"
+            required
+          />
+          <Select
+            label="Role"
+            value={memberFormData.role}
+            onChange={(e) =>
+              setMemberFormData({ ...memberFormData, role: e.target.value })
+            }
+            options={[
+              { value: "USER", label: "User" },
+              { value: "ADMIN", label: "Admin" },
+              { value: "MANAGER", label: "Manager" },
+            ]}
+          />
+          <div className="flex gap-3 pt-4">
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => setIsAddMemberModalOpen(false)}
+              className="flex-1"
+            >
+              Cancel
+            </Button>
+            <Button type="submit" className="flex-1">
+              Add Member
+            </Button>
           </div>
         </form>
       </Modal>
     </div>
-  )
+  );
 }
