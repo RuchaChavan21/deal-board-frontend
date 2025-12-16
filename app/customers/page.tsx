@@ -2,7 +2,8 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { getCustomers } from "../../src/api/customers"
+// CHANGED: Imported createCustomer
+import { getCustomers, createCustomer } from "../../src/api/customers"
 import type { Customer } from "../../src/types"
 import { Button } from "../../src/components/Button"
 import { Modal } from "../../src/components/Modal"
@@ -31,7 +32,7 @@ export default function CustomersPage() {
       const response = await getCustomers()
       const list = Array.isArray(response) ? response : []
       setCustomers(list)
-      setTotalPages(1)
+      setTotalPages(1) 
     } catch (error) {
       console.error("Failed to fetch customers:", error)
       setCustomers([])
@@ -47,9 +48,20 @@ export default function CustomersPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      await getCustomers()
+      // FIX: Use createCustomer API call
+      await createCustomer({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        // Note: Backend currently hardcodes 'LEAD', but we send these just in case
+        status: formData.status, 
+        owner: formData.owner 
+      })
+
       setIsModalOpen(false)
+      // Reset form
       setFormData({ name: "", email: "", phone: "", owner: "", status: "active" })
+      // Refresh list
       fetchCustomers(currentPage)
     } catch (error) {
       console.error("Failed to create customer:", error)
@@ -60,17 +72,22 @@ export default function CustomersPage() {
     { key: "name", header: "Name" },
     { key: "email", header: "Email" },
     { key: "phone", header: "Phone" },
-    { key: "owner", header: "Owner" },
+    { 
+      key: "owner", 
+      header: "Owner",
+      // Backend returns userId, fallback to text if missing
+      render: (value: any, row: any) => value || `User ${row.userId}` || "-" 
+    },
     {
-      key: "status",
+      key: "status", // Or "type" depending on your Entity JSON response
       header: "Status",
       render: (value: string) => (
         <span
           className={`inline-flex px-2 py-1 text-xs font-medium rounded ${
-            value === "active" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
+            (value || "").toLowerCase() === "active" ? "bg-green-100 text-green-800" : "bg-blue-100 text-blue-800"
           }`}
         >
-          {value}
+          {value || "LEAD"}
         </span>
       ),
     },
@@ -139,18 +156,14 @@ export default function CustomersPage() {
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             required
           />
-          <Input
-            label="Owner"
-            value={formData.owner}
-            onChange={(e) => setFormData({ ...formData, owner: e.target.value })}
-            required
-          />
+          {/* Note: Backend currently assigns Owner to the logged-in user automatically */}
           <Select
             label="Status"
             value={formData.status}
             onChange={(e) => setFormData({ ...formData, status: e.target.value })}
             options={[
               { value: "active", label: "Active" },
+              { value: "lead", label: "Lead" },
               { value: "inactive", label: "Inactive" },
             ]}
           />

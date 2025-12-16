@@ -1,36 +1,59 @@
-[00:00:03.844] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:04.331] Server  LOG      ✓ Ready in 3.2s
-[00:00:10.995] Server  LOG      ○ Compiling / ...
-[00:00:17.021] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:17.021] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:17.021] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890388417}
-[00:00:23.498] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:00:23.499] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890394879}
-[00:03:15.658] Server  LOG      ○ Compiling /_not-found/page ...
-[00:03:23.059] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:03:23.059] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/app/dashboard","route":"/app/dashboard"}
-[00:03:23.059] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/app/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/app/dashboard","o":"http://localhost:3000/app/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890574453}
-[00:03:43.510] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:03:43.510] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890594897}
-[00:03:43.712] Browser LOG     Backend Response: [{"description":"internal sales and deal management org","id":1,"name":"apex-solutions","organizationId":1,"role":"USER","userId":2},{"description":"internal sales and deal management org","id":1,"name":"apex-solutions","organizationId":1,"role":"ADMIN","userId":2}]
-[00:03:43.712] Browser LOG     Backend Response: [{"description":"internal sales and deal management org","id":1,"name":"apex-solutions","organizationId":1,"role":"USER","userId":2},{"description":"internal sales and deal management org","id":1,"name":"apex-solutions","organizationId":1,"role":"ADMIN","userId":2}]
-[00:03:55.852] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
-[00:04:00.664] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:04:00.664] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/organizations","route":"/organizations"}
-[00:04:00.664] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/organizations color: rgb(120, 120, 120) color: inherit {"dp":"/organizations","o":"http://localhost:3000/organizations","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890612056}
-[00:04:00.876] Browser LOG     Backend Response: [{"description":"internal sales and deal management org","id":1,"name":"apex-solutions","organizationId":1,"role":"USER","userId":2},{"description":"internal sales and deal management org","id":1,"name":"apex-solutions","organizationId":1,"role":"ADMIN","userId":2}]
-[00:04:21.839] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:04:21.839] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tasks color: rgb(120, 120, 120) color: inherit {"dp":"/tasks","o":"http://localhost:3000/tasks","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890633227}
-[00:05:41.959] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/deals color: rgb(120, 120, 120) color: inherit {"dp":"/deals","o":"http://localhost:3000/deals","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890713346}
-[00:05:54.186] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tasks color: rgb(120, 120, 120) color: inherit {"dp":"/tasks","o":"http://localhost:3000/tasks","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890725580}
-[00:05:54.608] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/deals color: rgb(120, 120, 120) color: inherit {"dp":"/deals","o":"http://localhost:3000/deals","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890726003}
-[00:06:00.343] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890731723}
-[00:06:14.992] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tasks color: rgb(120, 120, 120) color: inherit {"dp":"/tasks","o":"http://localhost:3000/tasks","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890746385}
-[00:09:10.851] Server  LOG      ✓ Compiled in 2.7s
-[00:09:13.747] Browser LOG     Tasks Data: [{"assignedToUserId":1,"customerId":null,"dealId":1,"description":"Call client for negotiation","dueDate":"2025-01-10","id":1,"organizationId":1,"status":"TODO","title":"Follow up with client"},{"assignedToUserId":1,"customerId":null,"dealId":1,"description":"Call client for negotiation","dueDate":"2025-01-10","id":2,"organizationId":1,"status":"TODO","title":"Follow up with client"}]
-[00:10:03.720] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
-[00:10:09.167] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. 1
-[00:10:09.167] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/deals color: rgb(120, 120, 120) color: inherit {"dp":"/deals","o":"http://localhost:3000/deals","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890980548}
-[00:10:39.073] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765891010465}
-[00:10:42.551] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/deals color: rgb(120, 120, 120) color: inherit {"dp":"/deals","o":"http://localhost:3000/deals","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765891013942}
-[00:11:00.064] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765891031458}
+[00:00:02.814] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:03.214] Server  LOG      ✓ Ready in 2.4s
+[00:00:09.212] Server  LOG      ○ Compiling /customers ...
+[00:00:10.950] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:10.950] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/customers","route":"/customers"}
+[00:00:10.950] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765891091113}
+[00:07:30.535] Server  LOG      ✓ Compiled in 1083ms
+[00:07:31.966] Browser ERROR   ./app/customers/page.tsx:6:1
+Export createCustomer doesn't exist in target module
+  4 | import { useState, useEffect } from "react"
+  5 | // CHANGED: Imported createCustomer
+> 6 | import { getCustomers, createCustomer } from "../../src/api/customers"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import type { Customer } from "../../src/types"
+  8 | import { Button } from "../../src/components/Button"
+  9 | import { Modal } from "../../src/components/Modal"
+
+The export createCustomer was not found in module [project]/src/api/customers.ts [app-client] (ecmascript).
+Did you mean to import getCustomers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/customers/page.tsx [Client Component Browser]
+    ./app/customers/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/customers/page.tsx [Client Component SSR]
+    ./app/customers/page.tsx [Server Component]
+[00:07:31.966] Browser ERROR   ./app/customers/page.tsx:6:1
+Export createCustomer doesn't exist in target module
+  4 | import { useState, useEffect } from "react"
+  5 | // CHANGED: Imported createCustomer
+> 6 | import { getCustomers, createCustomer } from "../../src/api/customers"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import type { Customer } from "../../src/types"
+  8 | import { Button } from "../../src/components/Button"
+  9 | import { Modal } from "../../src/components/Modal"
+
+The export createCustomer was not found in module [project]/src/api/customers.ts [app-ssr] (ecmascript).
+Did you mean to import getCustomers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/customers/page.tsx [Client Component Browser]
+    ./app/customers/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/customers/page.tsx [Client Component SSR]
+    ./app/customers/page.tsx [Server Component]
+[00:09:22.781] Server  LOG      ✓ Compiled in 1011ms
+[00:09:37.965] Server  LOG      ✓ Compiled in 221ms
+[00:09:48.314] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:48.314] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/customers","route":"/customers"}
+[00:09:48.314] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/customers color: rgb(120, 120, 120) color: inherit {"dp":"/customers","o":"http://localhost:3000/customers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765891668499}
+[00:11:26.371] Server  LOG      ○ Compiling /dashboard ...
+[00:11:33.048] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:11:33.048] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765891773234}
