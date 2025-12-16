@@ -31,28 +31,29 @@ export interface Customer {
 }
 
 export interface Deal {
-  id: string
+  id: number
   title: string
   value: number
   stage: DealStage
-  customerId: string
+  customerId: number
   customerName: string
   expectedCloseDate: string
-  ownerId: string
+  ownerId: number
   ownerName: string
 }
 
 export type DealStage = "Lead" | "Contacted" | "Proposal" | "Negotiation" | "Won" | "Lost"
 
 export interface Task {
-  id: string
+  id: number | string
   title: string
-  dealId?: string
-  dealTitle?: string
-  assignedUserId: string
-  assignedUserName: string
-  status: "pending" | "completed"
+  description?: string
+  status: "TODO" | "IN_PROGRESS" | "COMPLETED"
   dueDate: string
+  assignedToUserId: number | string
+  dealId?: number | string
+  customerId?: number | string
+  organizationId?: number | string
 }
 
 export interface DashboardStats {

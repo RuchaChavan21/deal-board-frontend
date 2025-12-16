@@ -22,7 +22,7 @@ export default function LoginPage() {
       const response = await axiosInstance.post("/auth/login", { email, password })
       const token = response?.data?.token
       const role = response?.data?.role || response?.data?.user?.role
-      const userId = response?.data?.user?.id || response?.data?.userId
+      const userId = response?.data?.userId ?? response?.data?.user?.id
       const orgId =
         response?.data?.orgId ||
         response?.data?.organizationId ||
@@ -33,8 +33,15 @@ export default function LoginPage() {
         if (role) {
           localStorage.setItem("role", role)
         }
-        if (userId) {
+        if (userId != null) {
           localStorage.setItem("userId", String(userId))
+          localStorage.setItem(
+            "auth_user",
+            JSON.stringify({
+              id: userId,
+              role,
+            }),
+          )
         }
         if (orgId) {
           const orgIdString = String(orgId)

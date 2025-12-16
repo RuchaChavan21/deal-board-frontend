@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { getMyOrganizations, createOrganization } from "../../src/api/organizations"
+import { getOrganizations, createOrganization } from "../../src/api/organizations"
 import { Button } from "../../src/components/Button"
 import { Modal } from "../../src/components/Modal"
 import { Input } from "../../src/components/Input"
@@ -36,7 +36,7 @@ export default function OrganizationsPage() {
   const fetchOrganizations = async () => {
     setIsLoading(true)
     try {
-      const data = await getMyOrganizations()
+      const data = await getOrganizations()
       console.log("Backend Response:", data) 
 
       const list = Array.isArray(data) ? data.map((item: any) => {

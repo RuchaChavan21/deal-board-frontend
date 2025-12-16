@@ -13,23 +13,28 @@ import { canManageDeals } from "../../../src/utils/roles"
 export default function DealDetailPage() {
   const params = useParams()
   const router = useRouter()
-  const id = params.id as string
+  const idParam = params.id as string
+  const dealId = Number(idParam)
   const [deal, setDeal] = useState<Deal | null>(null)
   const [tasks, setTasks] = useState<Task[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [role, setRole] = useState<string>("")
+  const [currentOrgRole, setCurrentOrgRole] = useState<string>("")
 
   useEffect(() => {
     const fetchDealDetails = async () => {
-      if (!id) return
+      if (!dealId || Number.isNaN(dealId)) return
 
       try {
         const allDeals = await getDeals()
-        const found = Array.isArray(allDeals) ? allDeals.find((item) => item.id === id) : null
+        const found = Array.isArray(allDeals)
+          ? allDeals.find((item) => item.id === dealId)
+          : null
         setDeal(found ?? null)
 
         const allTasks = await getTasks()
-        const dealTasks = Array.isArray(allTasks) ? allTasks.filter((task) => task.dealId === id) : []
+        const dealTasks = Array.isArray(allTasks)
+          ? allTasks.filter((task) => String(task.dealId) === String(dealId))
+          : []
         setTasks(dealTasks)
       } catch (error) {
         console.error("Failed to fetch deal details:", error)
@@ -39,15 +44,15 @@ export default function DealDetailPage() {
     }
 
     fetchDealDetails()
-    const storedRole = typeof window !== "undefined" ? localStorage.getItem("role") || "" : ""
-    setRole(storedRole)
-  }, [id])
+    const role = typeof window !== "undefined" ? localStorage.getItem("currentOrgRole") || "" : ""
+    setCurrentOrgRole(role)
+  }, [dealId])
 
   const handleStageChange = async (newStage: string) => {
-    if (!deal || !id) return
+    if (!deal || !dealId || Number.isNaN(dealId)) return
 
     try {
-      const updatedDeal = await updateDeal(id, { stage: newStage as DealStage })
+      const updatedDeal = await updateDeal(dealId, { stage: newStage as DealStage })
       setDeal(updatedDeal ?? deal)
     } catch (error) {
       console.error("Failed to update deal stage:", error)
@@ -87,7 +92,11 @@ export default function DealDetailPage() {
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Deal Information</h2>
         <div className="grid grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Deal Value</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+            <div className="text-lg font-semibold text-gray-900">{deal.title}</div>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Value</label>
             <div className="text-lg font-semibold text-gray-900">${deal.value.toLocaleString()}</div>
           </div>
           <div>
@@ -95,23 +104,28 @@ export default function DealDetailPage() {
             <div className="text-lg text-gray-900">{new Date(deal.expectedCloseDate).toLocaleDateString()}</div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Customer</label>
-            <div className="text-lg text-gray-900">{deal.customerName}</div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Customer ID</label>
+            <div className="text-lg text-gray-900">{deal.customerId}</div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Owner</label>
-            <div className="text-lg text-gray-900">{deal.ownerName}</div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Owner User ID</label>
+            <div className="text-lg text-gray-900">{deal.ownerId}</div>
           </div>
-          {canManageDeals(role) && (
-            <div className="col-span-2">
+          <div className="col-span-2">
+            {canManageDeals(currentOrgRole) ? (
               <Select
-                label="Deal Stage"
+                label="Stage"
                 value={deal.stage}
                 onChange={(e) => handleStageChange(e.target.value)}
                 options={DEAL_STAGES.map((stage) => ({ value: stage, label: stage }))}
               />
-            </div>
-          )}
+            ) : (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Stage</label>
+                <div className="text-lg text-gray-900">{deal.stage}</div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

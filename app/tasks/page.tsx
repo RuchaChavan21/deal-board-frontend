@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { getTasks, createTask } from "../../src/api/tasks"
+import { getTasks, createTask, completeTask } from "../../src/api/tasks"
 import type { Task } from "../../src/types"
 import { Button } from "../../src/components/Button"
 import { Modal } from "../../src/components/Modal"
@@ -24,9 +24,8 @@ export default function TasksPage() {
     description: "",
     dealId: "",
     customerId: "",
-    assignedUserId: "",
-    assignedUserName: "",
-    status: "TODO", // Updated default to match DB
+    assignedToUserId: "",
+    status: "TODO",
     dueDate: "",
   })
 
@@ -34,15 +33,8 @@ export default function TasksPage() {
     setIsLoading(true)
     try {
       const data = await getTasks()
-      // Debug: see exactly what keys are coming back
-      console.log("Tasks Data:", data); 
-      
       const list = Array.isArray(data) ? data : []
-      if (role === "USER" && currentUserId) {
-        setTasks(list.filter((task) => String(task.assignedUserId) === String(currentUserId)))
-      } else {
-        setTasks(list)
-      }
+      setTasks(list)
     } catch (error) {
       console.error("Failed to fetch tasks:", error)
       setTasks([])
@@ -52,8 +44,13 @@ export default function TasksPage() {
   }
 
   useEffect(() => {
-    const storedRole = typeof window !== "undefined" ? localStorage.getItem("role") || "" : ""
-    const storedUserId = typeof window !== "undefined" ? localStorage.getItem("userId") || "" : ""
+    const storedRole = typeof window !== "undefined" ? localStorage.getItem("currentOrgRole") || "" : ""
+    const storedUserId =
+      typeof window !== "undefined"
+        ? JSON.parse(localStorage.getItem("auth_user") || "{}")?.id?.toString() ||
+          localStorage.getItem("userId") ||
+          ""
+        : ""
     setRole(storedRole)
     setCurrentUserId(storedUserId)
     fetchTasks()
@@ -62,7 +59,15 @@ export default function TasksPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      await createTask(formData)
+      await createTask({
+        title: formData.title,
+        description: formData.description || undefined,
+        dealId: formData.dealId ? Number(formData.dealId) : undefined,
+        customerId: formData.customerId ? Number(formData.customerId) : undefined,
+        assignedToUserId: Number(formData.assignedToUserId),
+        dueDate: formData.dueDate,
+        status: formData.status as Task["status"],
+      })
       setIsModalOpen(false)
       // Reset form
       setFormData({
@@ -70,8 +75,7 @@ export default function TasksPage() {
         description: "",
         dealId: "",
         customerId: "",
-        assignedUserId: "",
-        assignedUserName: "",
+        assignedToUserId: "",
         status: "TODO",
         dueDate: "",
       })
@@ -81,19 +85,17 @@ export default function TasksPage() {
     }
   }
 
-  const handleMarkCompleted = async (taskId: string) => {
-    // Optimistic update
-    setTasks((prev) => prev.map((task) => (task.id === taskId ? { ...task, status: "COMPLETED" } : task)))
-    // You should probably call an API here to persist the change
+  const handleMarkCompleted = async (taskId: number | string) => {
+    try {
+      await completeTask(taskId)
+      await fetchTasks()
+    } catch (error) {
+      console.error("Failed to complete task:", error)
+    }
   }
 
   // --- UPDATED COLUMNS DEFINITION ---
   const columns = [
-    {
-      key: "id",
-      header: "ID",
-      render: (value: any) => <span className="text-gray-500 text-xs">#{value}</span>,
-    },
     {
       key: "title",
       header: "Title",
@@ -111,36 +113,26 @@ export default function TasksPage() {
       render: (value: string) => <span className="text-sm text-gray-600 truncate max-w-[200px] block" title={value}>{value || "-"}</span>,
     },
     {
-      key: "dealId", // Changed from dealTitle to dealId as per DB screenshot
+      key: "dealId",
       header: "Deal ID",
-      render: (value: any) => value ? <span className="font-mono text-xs">{value}</span> : "-",
+      render: (value: any) => (value ? <span className="font-mono text-xs">{value}</span> : "-"),
     },
     {
-        key: "customerId", 
-        header: "Cust ID",
-        render: (value: any) => value ? <span className="font-mono text-xs">{value}</span> : "-",
-    },
-    {
-        key: "organizationId", 
-        header: "Org ID",
-        render: (value: any) => value ? <span className="font-mono text-xs">{value}</span> : "-",
-    },
-    {
-      key: "assignedUserId", // Changed to ID as DB has 'assigned_to_user_id'
+      key: "assignedToUserId",
       header: "Assigned To",
-      render: (value: any, row: any) => row.assignedUserName || <span className="text-xs bg-gray-100 px-1 rounded">User {value}</span>,
+      render: (value: any) => (value ? <span className="font-mono text-xs">User {value}</span> : "-"),
     },
     {
       key: "status",
       header: "Status",
       render: (value: string) => {
         // Handle variations like "TODO", "todo", "pending"
-        const normalized = value ? value.toUpperCase() : "UNKNOWN";
-        let colorClass = "bg-gray-100 text-gray-800";
+        const normalized = value ? value.toUpperCase() : "UNKNOWN"
+        let colorClass = "bg-gray-100 text-gray-800"
         
-        if (normalized === "COMPLETED" || normalized === "DONE") colorClass = "bg-green-100 text-green-800";
-        if (normalized === "TODO" || normalized === "PENDING") colorClass = "bg-blue-100 text-blue-800";
-        if (normalized === "IN_PROGRESS") colorClass = "bg-yellow-100 text-yellow-800";
+        if (normalized === "COMPLETED") colorClass = "bg-green-100 text-green-800"
+        if (normalized === "TODO") colorClass = "bg-blue-100 text-blue-800"
+        if (normalized === "IN_PROGRESS") colorClass = "bg-yellow-100 text-yellow-800"
 
         return (
           <span className={`inline-flex px-2 py-1 text-xs font-medium rounded ${colorClass}`}>
@@ -158,11 +150,10 @@ export default function TasksPage() {
       key: "actions",
       header: "Actions",
       render: (_: any, row: any) => {
-        const isOwnTask = String(row.assignedUserId) === String(currentUserId)
-        const isPending = row.status !== "completed" && row.status !== "COMPLETED";
+        const isOwnTask = String(row.assignedToUserId) === String(currentUserId)
+        const isPending = row.status !== "COMPLETED"
         
         if (!isPending) return null
-        // Allow if admin or if it's your own task
         if (role === "USER" && !isOwnTask) return null
         
         return (
@@ -209,21 +200,21 @@ export default function TasksPage() {
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             />
             <div className="grid grid-cols-2 gap-4">
-                <Input
+              <Input
                 label="Deal ID"
                 value={formData.dealId}
                 onChange={(e) => setFormData({ ...formData, dealId: e.target.value })}
-                />
-                <Input
+              />
+              <Input
                 label="Customer ID"
                 value={formData.customerId}
                 onChange={(e) => setFormData({ ...formData, customerId: e.target.value })}
-                />
+              />
             </div>
             <Input
               label="Assigned User ID"
-              value={formData.assignedUserId}
-              onChange={(e) => setFormData({ ...formData, assignedUserId: e.target.value })}
+              value={formData.assignedToUserId}
+              onChange={(e) => setFormData({ ...formData, assignedToUserId: e.target.value })}
               required
             />
             <Input

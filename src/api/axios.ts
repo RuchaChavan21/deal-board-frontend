@@ -11,9 +11,27 @@ if (typeof window !== "undefined") {
   axiosInstance.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("token")
-      const role = localStorage.getItem("role")
+      const role = localStorage.getItem("currentOrgRole") || localStorage.getItem("role")
       const orgId = localStorage.getItem("currentOrgId")
-      const userId = localStorage.getItem("userId")
+
+      let userId: string | undefined
+      const authUserRaw = localStorage.getItem("auth_user")
+      if (authUserRaw) {
+        try {
+          const parsed = JSON.parse(authUserRaw) as { id?: number | string } | null
+          if (parsed && parsed.id != null) {
+            userId = String(parsed.id)
+          }
+        } catch {
+          // ignore parse errors and fall back to legacy key
+        }
+      }
+      if (!userId) {
+        const legacy = localStorage.getItem("userId")
+        if (legacy) {
+          userId = legacy
+        }
+      }
 
       const headers: Record<string, string> =
         (config.headers as Record<string, string> | undefined) ? { ...(config.headers as Record<string, string>) } : {}
@@ -23,8 +41,9 @@ if (typeof window !== "undefined") {
       }
 
       if (role) {
-        headers["X-ROLE"] = role
+        headers["X-ROLE"] = role.toUpperCase()
       }
+      
 
       if (userId) {
         headers["X-USER-ID"] = userId
