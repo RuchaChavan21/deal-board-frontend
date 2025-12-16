@@ -1,13 +1,57 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle2, Users, TrendingUp, Calendar, Building2, Shield, Zap } from "lucide-react"
 
 export default function LandingPage() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const vid = videoRef.current
+    if (!vid) return
+
+    const tryPlay = () => {
+      const playPromise = vid.play()
+      if (playPromise && typeof playPromise.then === "function") {
+        playPromise.catch(() => {
+          /* ignore autoplay rejection; overlay already covers */
+        })
+      }
+    }
+
+    tryPlay()
+
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") {
+        tryPlay()
+      }
+    }
+
+    document.addEventListener("visibilitychange", onVisibility)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12)
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility)
+      window.removeEventListener("scroll", onScroll)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen">
-      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border transition-all duration-300">
+      <nav
+        className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-xl ${
+          scrolled
+            ? "bg-slate-950/80 shadow-[0_12px_40px_rgba(0,0,0,0.55)]"
+            : "bg-slate-950/40 shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
@@ -15,24 +59,24 @@ export default function LandingPage() {
                 <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-lg">D</span>
                 </div>
-                <span className="text-xl font-bold tracking-tight">Deal Board</span>
+                <span className="text-xl font-bold tracking-tight text-white">Deal Board</span>
               </Link>
-              <div className="hidden md:flex items-center gap-6">
+               <div className="hidden md:flex items-center gap-6">
                 <Link
                   href="#features"
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                   className="text-sm font-medium text-slate-200 hover:text-white transition-colors"
                 >
                   Features
                 </Link>
                 <Link
                   href="#solutions"
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                   className="text-sm font-medium text-slate-200 hover:text-white transition-colors"
                 >
                   Solutions
                 </Link>
                 <Link
                   href="#pricing"
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                   className="text-sm font-medium text-slate-200 hover:text-white transition-colors"
                 >
                   Pricing
                 </Link>
@@ -40,12 +84,19 @@ export default function LandingPage() {
             </div>
             <div className="flex items-center gap-4">
               <Link href="/login">
-                <Button variant="ghost" size="sm">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-slate-200 hover:text-white hover:bg-white/5 transition-colors"
+                >
                   Login
                 </Button>
               </Link>
               <Link href="/register">
-                <Button size="sm" className="bg-primary hover:bg-primary/90">
+                <Button
+                  size="sm"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-md shadow-black/40 px-5 rounded-full"
+                >
                   Get Started
                 </Button>
               </Link>
@@ -55,33 +106,53 @@ export default function LandingPage() {
       </nav>
 
       <section className="relative pt-24 pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-muted/30 to-background pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Hero background video */}
+        <div className="absolute inset-0 bg-background" aria-hidden="true" />
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="/videos/video.mp4" type="video/mp4" />
+        </video>
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/60"
+          aria-hidden="true"
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
-              <Zap className="w-4 h-4" />
-              <span>Introducing Deal Board 2.0</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-balance mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-balance mb-6 leading-tight text-white">
               Manage customer relationships that drive{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">real growth</span>
+              <span className="text-primary">real growth</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-10 max-w-3xl mx-auto text-pretty">
+            <p className="text-xl md:text-2xl text-slate-200 leading-relaxed mb-10 max-w-3xl mx-auto text-pretty">
               Deal Board is the modern CRM platform that helps teams track deals, manage customers, and close more sales
               with intelligent automation.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/register">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-base px-8 h-12 rounded-xl">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 h-12 rounded-xl shadow-lg shadow-black/40"
+                >
                   Get Started Free
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="text-base px-8 h-12 rounded-xl bg-transparent">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base px-8 h-12 rounded-xl bg-transparent border border-white/70 text-white hover:bg-white/10 hover:text-white"
+              >
                 Request Demo
               </Button>
             </div>
-            <p className="text-sm text-muted-foreground mt-6">No credit card required · 14-day free trial</p>
+            <p className="text-sm text-white/70 mt-6">No credit card required · 14-day free trial</p>
           </div>
         </div>
       </section>
