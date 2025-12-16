@@ -15,8 +15,10 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const pathname = usePathname()
 
   const isPublic = pathname === "/" || pathname === "/login" || pathname === "/register"
+  const isDashboard = pathname === "/dashboard"
 
-  if (isPublic) {
+  // Dashboard has its own layout integrated, so don't wrap it
+  if (isPublic || isDashboard) {
     return <>{children}</>
   }
 
