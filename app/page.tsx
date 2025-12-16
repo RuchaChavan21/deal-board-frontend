@@ -1,0 +1,360 @@
+"use client"
+
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { ArrowRight, CheckCircle2, Users, TrendingUp, Calendar, Building2, Shield, Zap } from "lucide-react"
+
+export default function LandingPage() {
+  return (
+    <div className="min-h-screen">
+      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center gap-8">
+              <Link href="/" className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                  <span className="text-primary-foreground font-bold text-lg">D</span>
+                </div>
+                <span className="text-xl font-bold tracking-tight">Deal Board</span>
+              </Link>
+              <div className="hidden md:flex items-center gap-6">
+                <Link
+                  href="#features"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Features
+                </Link>
+                <Link
+                  href="#solutions"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Solutions
+                </Link>
+                <Link
+                  href="#pricing"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Pricing
+                </Link>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link href="/dashboard">
+                <Button variant="ghost" size="sm">
+                  Login
+                </Button>
+              </Link>
+              <Link href="/dashboard">
+                <Button size="sm" className="bg-primary hover:bg-primary/90">
+                  Get Started
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <section className="relative pt-24 pb-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-muted/30 to-background pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center max-w-4xl mx-auto animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
+              <Zap className="w-4 h-4" />
+              <span>Introducing Deal Board 2.0</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-balance mb-6 leading-tight">
+              Manage customer relationships that drive{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">real growth</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-10 max-w-3xl mx-auto text-pretty">
+              Deal Board is the modern CRM platform that helps teams track deals, manage customers, and close more sales
+              with intelligent automation.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/dashboard">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-base px-8 h-12 rounded-xl">
+                  Get Started Free
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+              <Button size="lg" variant="outline" className="text-base px-8 h-12 rounded-xl bg-transparent">
+                Request Demo
+              </Button>
+            </div>
+            <p className="text-sm text-muted-foreground mt-6">No credit card required · 14-day free trial</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 border-y border-border bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-muted-foreground text-sm mb-8">Trusted by thousands of growing teams</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-60">
+            <div className="text-2xl font-bold">Company A</div>
+            <div className="text-2xl font-bold">Company B</div>
+            <div className="text-2xl font-bold">Company C</div>
+            <div className="text-2xl font-bold">Company D</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                <Users className="w-4 h-4" />
+                <span>Customer Management</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-balance">
+                Know your customers inside and out
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Build comprehensive customer profiles with contact information, interaction history, and engagement
+                insights. Never miss an opportunity to connect.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">
+                    360-degree customer view with complete interaction history
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Segment and filter customers for targeted outreach</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Track customer status and lifecycle stages</span>
+                </li>
+              </ul>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 p-8 flex items-center justify-center">
+                <div className="w-full h-full bg-card rounded-xl shadow-2xl p-6 flex items-center justify-center">
+                  <Users className="w-24 h-24 text-primary" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
+            <div className="relative order-2 md:order-1">
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-accent/20 to-primary/20 p-8 flex items-center justify-center">
+                <div className="w-full h-full bg-card rounded-xl shadow-2xl p-6 flex items-center justify-center">
+                  <TrendingUp className="w-24 h-24 text-accent" />
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6 order-1 md:order-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium">
+                <TrendingUp className="w-4 h-4" />
+                <span>Deal Pipeline</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-balance">
+                Move deals forward with confidence
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Visualize your sales pipeline with intuitive Kanban boards. Track every deal stage, identify
+                bottlenecks, and forecast revenue with precision.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Drag-and-drop pipeline management</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Customizable deal stages and workflows</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Real-time revenue forecasting</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                <Calendar className="w-4 h-4" />
+                <span>Task Automation</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-balance">
+                Never miss a follow-up again
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Automate repetitive tasks and set smart reminders. Focus on building relationships while Deal Board
+                handles the administrative work.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Automated task creation and assignment</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Smart reminders and notifications</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Activity tracking and reporting</span>
+                </li>
+              </ul>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 p-8 flex items-center justify-center">
+                <div className="w-full h-full bg-card rounded-xl shadow-2xl p-6 flex items-center justify-center">
+                  <Calendar className="w-24 h-24 text-primary" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="solutions" className="py-24 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Built for modern teams</h2>
+            <p className="text-lg text-muted-foreground">
+              Everything you need to scale your business, from startups to enterprise
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-card p-8 rounded-2xl border border-border hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                <Building2 className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Multi-organization</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Manage multiple businesses or clients from a single account. Switch contexts seamlessly.
+              </p>
+            </div>
+            <div className="bg-card p-8 rounded-2xl border border-border hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                <Shield className="w-6 h-6 text-accent" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Enterprise security</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Bank-level encryption, role-based access control, and comprehensive audit logs.
+              </p>
+            </div>
+            <div className="bg-card p-8 rounded-2xl border border-border hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                <Zap className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Lightning fast</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Built on modern infrastructure for instant loading and real-time updates.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-balance">
+            Ready to close more deals?
+          </h2>
+          <p className="text-xl text-muted-foreground mb-10">
+            Join thousands of teams using Deal Board to grow their business
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/dashboard">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-base px-8 h-12 rounded-xl">
+                Start Free Trial
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+            <Button size="lg" variant="outline" className="text-base px-8 h-12 rounded-xl bg-transparent">
+              Talk to Sales
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-border bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                  <span className="text-primary-foreground font-bold text-lg">D</span>
+                </div>
+                <span className="text-lg font-bold">Deal Board</span>
+              </div>
+              <p className="text-sm text-muted-foreground">Modern CRM for modern teams</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Product</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <Link href="#features" className="hover:text-foreground transition-colors">
+                    Features
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#solutions" className="hover:text-foreground transition-colors">
+                    Solutions
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#pricing" className="hover:text-foreground transition-colors">
+                    Pricing
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <Link href="#" className="hover:text-foreground transition-colors">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground transition-colors">
+                    Careers
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Support</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <Link href="#" className="hover:text-foreground transition-colors">
+                    Help Center
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground transition-colors">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-foreground transition-colors">
+                    Privacy
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-border mt-12 pt-8 text-center text-sm text-muted-foreground">
+            <p>&copy; 2025 Deal Board. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
