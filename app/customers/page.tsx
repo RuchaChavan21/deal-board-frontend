@@ -135,11 +135,12 @@ export default function CustomersPage() {
       )}
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Create Customer">
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <Input
-            label="Name"
+            label="Customer Name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            placeholder="Enter customer name"
             required
           />
           <Input
@@ -147,6 +148,7 @@ export default function CustomersPage() {
             type="email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            placeholder="Enter email address"
             required
           />
           <Input
@@ -154,9 +156,9 @@ export default function CustomersPage() {
             type="tel"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            placeholder="Enter phone number"
             required
           />
-          {/* Note: Backend currently assigns Owner to the logged-in user automatically */}
           <Select
             label="Status"
             value={formData.status}
@@ -167,12 +169,20 @@ export default function CustomersPage() {
               { value: "inactive", label: "Inactive" },
             ]}
           />
-          <div className="flex gap-3 pt-4">
-            <Button type="button" variant="secondary" onClick={() => setIsModalOpen(false)} className="flex-1">
+          <div className="flex gap-3 pt-2">
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => setIsModalOpen(false)}
+              className="flex-1"
+            >
               Cancel
             </Button>
-            <Button type="submit" className="flex-1">
-              Create
+            <Button
+              type="submit"
+              className="flex-1 bg-primary hover:bg-primary-hover active:scale-[0.98] transition-all duration-200 shadow-md shadow-primary/20"
+            >
+              Create Customer
             </Button>
           </div>
         </form>

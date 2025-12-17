@@ -176,7 +176,7 @@ export default function ProfilePage() {
                     <span className="flex items-center gap-1.5">
                       <Briefcase className="h-4 w-4 text-blue-500" />
                       {profile.jobTitle || "No Title"} at{" "}
-                      {profile.id ? "Acme Corp" : "Organization"}
+                      {profile.id ? "Acme Corp" : "Department"}
                     </span>
                     <span className="flex items-center gap-1.5">
                       <MapPin className="h-4 w-4 text-slate-400" />

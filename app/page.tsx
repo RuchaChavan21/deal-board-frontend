@@ -55,11 +55,30 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
-              <Link href="/" className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-lg">D</span>
+              <Link href="/" className="flex items-center gap-3 group">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent rounded-xl blur-md opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                  <div className="relative w-10 h-10 bg-gradient-to-br from-primary via-primary/90 to-accent rounded-xl flex items-center justify-center shadow-lg shadow-primary/30 group-hover:shadow-xl group-hover:shadow-primary/40 transition-all duration-300 group-hover:scale-105">
+                    <svg
+                      className="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2.5}
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      />
+                    </svg>
+                  </div>
                 </div>
-                <span className="text-xl font-bold tracking-tight text-white">Deal Board</span>
+                <div className="flex flex-col">
+                  <span className="text-xl font-bold tracking-tight text-white leading-tight">Deal Board</span>
+                  <span className="text-[10px] text-slate-300 uppercase tracking-wider font-medium">CRM Platform</span>
+                </div>
               </Link>
                <div className="hidden md:flex items-center gap-6">
                 <Link
@@ -292,7 +311,7 @@ export default function LandingPage() {
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
                 <Building2 className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Multi-organization</h3>
+              <h3 className="text-xl font-bold mb-3">Multi-department</h3>
               <p className="text-muted-foreground leading-relaxed">
                 Manage multiple businesses or clients from a single account. Switch contexts seamlessly.
               </p>
@@ -345,11 +364,30 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-lg">D</span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent rounded-xl blur-sm opacity-40"></div>
+                  <div className="relative w-10 h-10 bg-gradient-to-br from-primary via-primary/90 to-accent rounded-xl flex items-center justify-center shadow-md shadow-primary/20">
+                    <svg
+                      className="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2.5}
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      />
+                    </svg>
+                  </div>
                 </div>
-                <span className="text-lg font-bold">Deal Board</span>
+                <div className="flex flex-col">
+                  <span className="text-lg font-bold tracking-tight leading-tight">Deal Board</span>
+                  <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium">CRM Platform</span>
+                </div>
               </div>
               <p className="text-sm text-muted-foreground">Modern CRM for modern teams</p>
             </div>

@@ -94,10 +94,10 @@ export default function OrganizationsPage() {
       await fetchOrganizations();
       setIsCreateModalOpen(false);
       setCreateFormData({ name: "", description: "" });
-      toast({ title: "Organization created" });
+      toast({ title: "Department created" });
     } catch (error) {
       console.error("Failed to create organization:", error);
-      toast({ title: "Error creating organization" });
+      toast({ title: "Error creating department" });
     }
   };
 
@@ -143,21 +143,21 @@ export default function OrganizationsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-gray-900">
-            Organizations
+            Departments
           </h1>
           <p className="text-sm text-gray-500 mt-1">
-            Switch between organizations or manage members.
+            Switch between departments or manage members.
           </p>
         </div>
         <Button onClick={() => setIsCreateModalOpen(true)}>
-          Create Organization
+          Create Department
         </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {organizations.length === 0 ? (
           <div className="col-span-full text-center text-gray-500 py-12">
-            No organizations found
+            No departments found
           </div>
         ) : (
           organizations.map((org, index) => (
@@ -200,11 +200,11 @@ export default function OrganizationsPage() {
                     onClick={() => handleSetActive(String(org.id))}
                     className="w-full"
                   >
-                    Switch to This Organization
+                    Switch to This Department
                   </Button>
                 ) : (
                   <Button
-                    variant="outline"
+                    variant="secondary"
                     className="w-full border-blue-200 bg-blue-50 text-blue-700 pointer-events-none"
                   >
                     Currently Active
@@ -213,7 +213,7 @@ export default function OrganizationsPage() {
 
                 {/* Add Member Button */}
                 <Button
-                  variant="outline"
+                  variant="secondary"
                   onClick={() => openAddMemberModal(String(org.id))}
                   className="w-full flex items-center justify-center gap-2"
                 >
@@ -229,32 +229,49 @@ export default function OrganizationsPage() {
       <Modal
         isOpen={isCreateModalOpen}
         onClose={() => setIsCreateModalOpen(false)}
-        title="Create Organization"
+        title="Create Department"
       >
-        <form onSubmit={handleCreateSubmit} className="space-y-4">
+        <form onSubmit={handleCreateSubmit} className="space-y-5">
           <Input
-            label="Name"
+            label="Department Name"
             value={createFormData.name}
             onChange={(e) =>
               setCreateFormData({ ...createFormData, name: e.target.value })
             }
+            placeholder="Enter department name"
             required
           />
-          <textarea
-            value={createFormData.description}
-            onChange={(e) =>
-              setCreateFormData({
-                ...createFormData,
-                description: e.target.value,
-              })
-            }
-            className="w-full border p-2 rounded text-sm"
-            placeholder="Description (optional)"
-            rows={3}
-          />
-          <div className="flex gap-3 pt-4">
-            <Button type="submit" className="w-full">
-              Create
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Description <span className="text-gray-400 font-normal">(optional)</span>
+            </label>
+            <textarea
+              value={createFormData.description}
+              onChange={(e) =>
+                setCreateFormData({
+                  ...createFormData,
+                  description: e.target.value,
+                })
+              }
+              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 resize-none"
+              placeholder="Add a description for this department"
+              rows={4}
+            />
+          </div>
+          <div className="flex gap-3 pt-2">
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => setIsCreateModalOpen(false)}
+              className="flex-1"
+            >
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              className="flex-1 bg-primary hover:bg-primary-hover active:scale-[0.98] transition-all duration-200 shadow-md shadow-primary/20"
+            >
+              Create Department
             </Button>
           </div>
         </form>
@@ -264,11 +281,11 @@ export default function OrganizationsPage() {
       <Modal
         isOpen={isAddMemberModalOpen}
         onClose={() => setIsAddMemberModalOpen(false)}
-        title="Add Member to Organization"
+        title="Add Member to Department"
       >
         <form onSubmit={handleAddMemberSubmit} className="space-y-4">
           <div className="bg-yellow-50 text-yellow-800 p-3 rounded text-xs mb-2">
-            Adding user to Organization ID: <strong>{targetOrgId}</strong>
+            Adding user to Department ID: <strong>{targetOrgId}</strong>
           </div>
           <Input
             label="User ID"

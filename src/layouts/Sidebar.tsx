@@ -22,6 +22,7 @@ interface NavItem {
 
 export const Sidebar = () => {
   const pathname = usePathname()
+<<<<<<< Updated upstream
   const [role, setRole] = useState("")
 
   // 1. Safe Role Hydration: 
@@ -31,6 +32,11 @@ export const Sidebar = () => {
     const storedRole = localStorage.getItem("role") || ""
     setRole(storedRole)
   }, [])
+=======
+  const role = typeof window !== "undefined" 
+    ? localStorage.getItem("currentOrgRole") || localStorage.getItem("role") || "" 
+    : ""
+>>>>>>> Stashed changes
 
   const navItems: NavItem[] = [
     {
@@ -54,7 +60,7 @@ export const Sidebar = () => {
       icon: <Users className="w-6 h-6" />,
     },
     {
-      label: "Organizations",
+      label: "Departments",
       path: "/organizations",
       icon: <Building2 className="w-6 h-6" />,
     },
@@ -78,6 +84,7 @@ export const Sidebar = () => {
   }
 
   return (
+<<<<<<< Updated upstream
     <aside className="w-20 bg-[#164e63] h-screen flex flex-col items-center py-6 shadow-xl shrink-0 z-50">
       
       {/* Logo Area */}
@@ -88,6 +95,33 @@ export const Sidebar = () => {
         >
           <div className="text-white opacity-90 hover:opacity-100 transition-opacity">
             <BarChart3 className="w-8 h-8" strokeWidth={3} />
+=======
+    <aside className="w-64 bg-sidebar border-r border-border h-screen flex flex-col shadow-sm">
+      <div className="px-6 py-4 border-b border-border bg-sidebar">
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent rounded-xl blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+            <div className="relative w-10 h-10 bg-gradient-to-br from-primary via-primary/90 to-accent rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:shadow-xl group-hover:shadow-primary/30 transition-all duration-300 group-hover:scale-105">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-lg font-bold tracking-tight text-text-base leading-tight">Deal Board</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium">CRM Platform</span>
+>>>>>>> Stashed changes
           </div>
         </Link>
       </div>

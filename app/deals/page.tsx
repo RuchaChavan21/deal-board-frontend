@@ -198,56 +198,63 @@ export default function DealsPage() {
 
       {canCreate && (
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Create Deal">
-        <form onSubmit={handleCreateSubmit} className="space-y-4">
-          <Input
-            label="Title"
-            value={formData.title}
-            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-            required
-          />
-          <Input
-            label="Value"
-            type="number"
-            min="0"
-            value={formData.value}
-            onChange={(e) => setFormData({ ...formData, value: e.target.value })}
-            required
-          />
-          <Input
-            label="Customer ID"
-            type="number"
-            value={formData.customerId}
-            onChange={(e) => setFormData({ ...formData, customerId: e.target.value })}
-            required
-          />
-          <Input
-            label="Expected Close Date"
-            type="date"
-            value={formData.expectedCloseDate}
-            onChange={(e) => setFormData({ ...formData, expectedCloseDate: e.target.value })}
-            required
-          />
-          <Select
-            label="Stage"
-            value={formData.stage}
-            onChange={(e) => setFormData({ ...formData, stage: e.target.value as DealStage })}
-            options={DEAL_STAGES.map((stage) => ({ value: stage, label: stage }))}
-          />
-          <div className="flex gap-3 pt-4">
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={() => setIsModalOpen(false)}
-              className="flex-1"
-            >
-              Cancel
-            </Button>
-            <Button type="submit" className="flex-1">
-              Create Deal
-            </Button>
-          </div>
-        </form>
-      </Modal>
+          <form onSubmit={handleCreateSubmit} className="space-y-5">
+            <Input
+              label="Deal Title"
+              value={formData.title}
+              onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+              placeholder="Enter deal title"
+              required
+            />
+            <Input
+              label="Deal Value"
+              type="number"
+              min="0"
+              step="0.01"
+              value={formData.value}
+              onChange={(e) => setFormData({ ...formData, value: e.target.value })}
+              placeholder="Enter deal value"
+              required
+            />
+            <Input
+              label="Customer ID"
+              type="number"
+              value={formData.customerId}
+              onChange={(e) => setFormData({ ...formData, customerId: e.target.value })}
+              placeholder="Enter customer ID"
+              required
+            />
+            <Input
+              label="Expected Close Date"
+              type="date"
+              value={formData.expectedCloseDate}
+              onChange={(e) => setFormData({ ...formData, expectedCloseDate: e.target.value })}
+              required
+            />
+            <Select
+              label="Stage"
+              value={formData.stage}
+              onChange={(e) => setFormData({ ...formData, stage: e.target.value as DealStage })}
+              options={DEAL_STAGES.map((stage) => ({ value: stage, label: stage }))}
+            />
+            <div className="flex gap-3 pt-2">
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => setIsModalOpen(false)}
+                className="flex-1"
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                className="flex-1 bg-primary hover:bg-primary-hover active:scale-[0.98] transition-all duration-200 shadow-md shadow-primary/20"
+              >
+                Create Deal
+              </Button>
+            </div>
+          </form>
+        </Modal>
       )}
     </div>
   )

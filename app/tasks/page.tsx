@@ -187,34 +187,45 @@ export default function TasksPage() {
 
       {canCreateTasks(role) && (
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Create Task">
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <Input
-              label="Title"
+              label="Task Title"
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+              placeholder="Enter task title"
               required
             />
-            <Input
-              label="Description"
-              value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Description <span className="text-gray-400 font-normal">(optional)</span>
+              </label>
+              <textarea
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 resize-none"
+                placeholder="Add a description for this task"
+                rows={3}
+              />
+            </div>
             <div className="grid grid-cols-2 gap-4">
               <Input
                 label="Deal ID"
                 value={formData.dealId}
                 onChange={(e) => setFormData({ ...formData, dealId: e.target.value })}
+                placeholder="Optional"
               />
               <Input
                 label="Customer ID"
                 value={formData.customerId}
                 onChange={(e) => setFormData({ ...formData, customerId: e.target.value })}
+                placeholder="Optional"
               />
             </div>
             <Input
               label="Assigned User ID"
               value={formData.assignedToUserId}
               onChange={(e) => setFormData({ ...formData, assignedToUserId: e.target.value })}
+              placeholder="Enter user ID"
               required
             />
             <Input
@@ -234,12 +245,20 @@ export default function TasksPage() {
                 { value: "COMPLETED", label: "Completed" },
               ]}
             />
-            <div className="flex gap-3 pt-4">
-              <Button type="button" variant="secondary" onClick={() => setIsModalOpen(false)} className="flex-1">
+            <div className="flex gap-3 pt-2">
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => setIsModalOpen(false)}
+                className="flex-1"
+              >
                 Cancel
               </Button>
-              <Button type="submit" className="flex-1">
-                Create
+              <Button
+                type="submit"
+                className="flex-1 bg-primary hover:bg-primary-hover active:scale-[0.98] transition-all duration-200 shadow-md shadow-primary/20"
+              >
+                Create Task
               </Button>
             </div>
           </form>

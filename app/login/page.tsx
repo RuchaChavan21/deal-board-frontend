@@ -49,7 +49,7 @@ export default function LoginPage() {
           localStorage.setItem("currentOrgId", orgIdString)
         }
         document.cookie = `token=${token}; path=/; SameSite=Lax`
-        router.push("/app/dashboard")
+        router.push("/organizations")
       } else {
         setError("Login failed")
       }
